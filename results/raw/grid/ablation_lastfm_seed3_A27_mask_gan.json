@@ -1,0 +1,7 @@
+[
+  {
+    "method": "A27_mask_gan",
+    "status": "skipped",
+    "reason": "adversarial_rejected_in_pilot"
+  }
+]

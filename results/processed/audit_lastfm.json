@@ -1,0 +1,59 @@
+{
+  "dataset": "lastfm",
+  "citation": "Rozemberczki & Sarkar, LastFM Asia (SNAP)",
+  "num_nodes": 7624,
+  "directed_edge_entries": 55612,
+  "unique_undirected_edges": 27806,
+  "self_loops": 0,
+  "duplicate_edges_approx": 0,
+  "feature_dimension": 7842,
+  "num_classes": 18,
+  "class_distribution": {
+    "0": 1098,
+    "1": 54,
+    "2": 73,
+    "3": 515,
+    "4": 16,
+    "5": 391,
+    "6": 655,
+    "7": 82,
+    "8": 468,
+    "9": 58,
+    "10": 1303,
+    "11": 138,
+    "12": 57,
+    "13": 63,
+    "14": 570,
+    "15": 257,
+    "16": 254,
+    "17": 1572
+  },
+  "density": 0.0009568849118596328,
+  "average_degree": 7.2943336831059815,
+  "num_connected_components": 1,
+  "giant_component_ratio": 1.0,
+  "homophily": 0.87387615442276,
+  "feature_sparsity": 0.949582040309906,
+  "assortativity": 0.01707317256063152,
+  "clustering_coefficient": 0.21941842432708525,
+  "library_versions": {
+    "torch": "2.4.0",
+    "torch_geometric": "2.6.1",
+    "networkx": "3.2.1",
+    "numpy": "1.26.4"
+  },
+  "dataset_download_date": "2026-07-24",
+  "raw_file_checksums": {
+    "extracted/lasftm_asia/README.txt": "87376cef791bac0271775517e5a26678b22a525220832f0f00b6db207b92fb2e",
+    "extracted/lasftm_asia/lastfm_asia_edges.csv": "548eacff61bff564ab5007831fa4a7a30e1a3956075ffd24e43310ed33555842",
+    "extracted/lasftm_asia/lastfm_asia_features.json": "93fe84c96ffa9f0081ab37085979641062393895925de6c344df0f829c8ed2e7",
+    "extracted/lasftm_asia/lastfm_asia_target.csv": "91f19215f6eca8321feec038bd32900cf13fd4f7e041a9976cf202807c72ac16"
+  },
+  "preprocessing": {
+    "undirected": true,
+    "remove_self_loops": true,
+    "coalesce_duplicates": true,
+    "feature_normalization": "none_at_audit",
+    "source": "SNAP/MUSAE mirrors (PyG graphmining.ai unavailable)"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "rq11_entries": [
+    {
+      "dataset": "facebook",
+      "auc_multi": {
+        "mean": 0.7391021496243756,
+        "std": 0.009954633325802901,
+        "ci95_low": 0.7329322039664302,
+        "ci95_high": 0.745272095282321,
+        "n": 10.0
+      },
+      "auc_a31": {
+        "mean": 0.7248928121769773,
+        "std": 0.01491480967032232,
+        "ci95_low": 0.7156485173694571,
+        "ci95_high": 0.7341371069844975,
+        "n": 10.0
+      },
+      "auc_paired": {
+        "paired_t_p": 0.0057751603939051694,
+        "wilcoxon_p": 0.00390625,
+        "effect_size_cohens_d": 1.1374751614161211
+      },
+      "giant_component_ratio_paired": {
+        "paired_t_p": 0.002789279744691354,
+        "wilcoxon_p": 0.007685794055213263,
+        "effect_size_cohens_d": 1.287829606576825
+      },
+      "bridge_preservation_paired": {
+        "paired_t_p": 0.0018919991466636922,
+        "wilcoxon_p": 0.007685794055213263,
+        "effect_size_cohens_d": 1.370759305230447
+      },
+      "minority_degree_retention_paired": {
+        "paired_t_p": 0.028741582084248107,
+        "wilcoxon_p": 0.013671875,
+        "effect_size_cohens_d": 0.8221696404167061
+      },
+      "dims_win": 4
+    },
+    {
+      "dataset": "lastfm",
+      "auc_multi": {
+        "mean": 0.5927180790046135,
+        "std": 0.038303415866165064,
+        "ci95_low": 0.5689773758894777,
+        "ci95_high": 0.6164587821197492,
+        "n": 10.0
+      },
+      "auc_a31": {
+        "mean": 0.5661961625760789,
+        "std": 0.050198685570403086,
+        "ci95_low": 0.5350826949140548,
+        "ci95_high": 0.5973096302381029,
+        "n": 10.0
+      },
+      "auc_paired": {
+        "paired_t_p": 0.035665511069738254,
+        "wilcoxon_p": 0.00390625,
+        "effect_size_cohens_d": 0.7805669557182854
+      },
+      "giant_component_ratio_paired": {
+        "paired_t_p": 0.03227511871449259,
+        "wilcoxon_p": 0.001953125,
+        "effect_size_cohens_d": 0.7998187127569821
+      },
+      "bridge_preservation_paired": {
+        "paired_t_p": 0.026956461050467055,
+        "wilcoxon_p": 0.001953125,
+        "effect_size_cohens_d": 0.8345355970283959
+      },
+      "minority_degree_retention_paired": {
+        "paired_t_p": 0.03807613251570956,
+        "wilcoxon_p": 0.011513828076845417,
+        "effect_size_cohens_d": 0.7679590162457927
+      },
+      "dims_win": 4
+    }
+  ],
+  "decision": {
+    "retain_six_component_as_headline": true,
+    "reason": "Multi-objective outperformed A31 on >=2 dimensions for datasets ['facebook', 'lastfm']",
+    "evidence": [
+      {
+        "dataset": "facebook",
+        "auc_multi": {
+          "mean": 0.7391021496243756,
+          "std": 0.009954633325802901,
+          "ci95_low": 0.7329322039664302,
+          "ci95_high": 0.745272095282321,
+          "n": 10.0
+        },
+        "auc_a31": {
+          "mean": 0.7248928121769773,
+          "std": 0.01491480967032232,
+          "ci95_low": 0.7156485173694571,
+          "ci95_high": 0.7341371069844975,
+          "n": 10.0
+        },
+        "auc_paired": {
+          "paired_t_p": 0.0057751603939051694,
+          "wilcoxon_p": 0.00390625,
+          "effect_size_cohens_d": 1.1374751614161211
+        },
+        "giant_component_ratio_paired": {
+          "paired_t_p": 0.002789279744691354,
+          "wilcoxon_p": 0.007685794055213263,
+          "effect_size_cohens_d": 1.287829606576825
+        },
+        "bridge_preservation_paired": {
+          "paired_t_p": 0.0018919991466636922,
+          "wilcoxon_p": 0.007685794055213263,
+          "effect_size_cohens_d": 1.370759305230447
+        },
+        "minority_degree_retention_paired": {
+          "paired_t_p": 0.028741582084248107,
+          "wilcoxon_p": 0.013671875,
+          "effect_size_cohens_d": 0.8221696404167061
+        },
+        "dims_win": 4
+      },
+      {
+        "dataset": "lastfm",
+        "auc_multi": {
+          "mean": 0.5927180790046135,
+          "std": 0.038303415866165064,
+          "ci95_low": 0.5689773758894777,
+          "ci95_high": 0.6164587821197492,
+          "n": 10.0
+        },
+        "auc_a31": {
+          "mean": 0.5661961625760789,
+          "std": 0.050198685570403086,
+          "ci95_low": 0.5350826949140548,
+          "ci95_high": 0.5973096302381029,
+          "n": 10.0
+        },
+        "auc_paired": {
+          "paired_t_p": 0.035665511069738254,
+          "wilcoxon_p": 0.00390625,
+          "effect_size_cohens_d": 0.7805669557182854
+        },
+        "giant_component_ratio_paired": {
+          "paired_t_p": 0.03227511871449259,
+          "wilcoxon_p": 0.001953125,
+          "effect_size_cohens_d": 0.7998187127569821
+        },
+        "bridge_preservation_paired": {
+          "paired_t_p": 0.026956461050467055,
+          "wilcoxon_p": 0.001953125,
+          "effect_size_cohens_d": 0.8345355970283959
+        },
+        "minority_degree_retention_paired": {
+          "paired_t_p": 0.03807613251570956,
+          "wilcoxon_p": 0.011513828076845417,
+          "effect_size_cohens_d": 0.7679590162457927
+        },
+        "dims_win": 4
+      }
+    ]
+  }
+}

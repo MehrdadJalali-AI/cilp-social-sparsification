@@ -1,0 +1,44 @@
+{
+  "dataset": "facebook",
+  "citation": "Rozemberczki et al., MUSAE / Facebook Page-Page (SNAP musae-facebook)",
+  "num_nodes": 22470,
+  "directed_edge_entries": 341646,
+  "unique_undirected_edges": 170823,
+  "self_loops": 179,
+  "duplicate_edges_approx": 0,
+  "feature_dimension": 4714,
+  "num_classes": 4,
+  "class_distribution": {
+    "0": 6495,
+    "1": 6880,
+    "2": 5768,
+    "3": 3327
+  },
+  "density": 0.0006766896339778271,
+  "average_degree": 15.204539385847797,
+  "num_connected_components": 1,
+  "giant_component_ratio": 1.0,
+  "homophily": 0.8853198885917664,
+  "feature_sparsity": 0.9970300197601318,
+  "assortativity": 0.08491250026368996,
+  "clustering_coefficient": 0.3597383824426918,
+  "library_versions": {
+    "torch": "2.4.0",
+    "torch_geometric": "2.6.1",
+    "networkx": "3.2.1",
+    "numpy": "1.26.4"
+  },
+  "dataset_download_date": "2026-07-24",
+  "raw_file_checksums": {
+    "edges.csv": "7c50d8f02a75cc0829577814a1fc14535164daa38d79c3612340c9e9cdbd4022",
+    "features.json": "ea870537646a93642a0008d38aa9bfeff02018070ba97b1f3f469d9622626436",
+    "target.csv": "7bd96eafea3c2ca40f44bfa9e73642194696c21e38c7b29ed409c32ad14075cd"
+  },
+  "preprocessing": {
+    "undirected": true,
+    "remove_self_loops": true,
+    "coalesce_duplicates": true,
+    "feature_normalization": "none_at_audit",
+    "source": "SNAP/MUSAE mirrors (PyG graphmining.ai unavailable)"
+  }
+}

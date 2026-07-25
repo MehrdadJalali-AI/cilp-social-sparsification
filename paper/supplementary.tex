@@ -1,0 +1,356 @@
+%% Supplementary Information — CILP
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{times}
+\usepackage{mathtools,amssymb}
+\usepackage{booktabs,longtable}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{enumitem}
+\usepackage{algorithm,algpseudocode}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{url}
+\urlstyle{tt}
+\setstretch{1.08}
+\providecommand{\path}[1]{\url{#1}}
+
+\title{Supplementary Information\\[0.3em]
+\large Learning which edges to remove under a budget:\\
+Counterfactual inverse link prediction for utility-preserving\\
+social-network sparsification}
+% Authors: finalize list before submission.
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{S1 Dataset acquisition and preprocessing}
+SNAP (LastFM, GitHub) and MUSAE (Facebook) public releases~\citep{rozemberczki2021multi}.
+Symmetrization; self-loop and duplicate undirected-edge removal; multi-hot bag-of-words features.
+
+\section{S2 Dataset audit and statistics}
+\input{tables/s2_dataset_audit.tex}
+Processed graphs contain no self-loops.
+Directed tensor encodings store both directions of each undirected edge; the unique undirected count is the scientific edge set used for budgets.
+
+\section{S3 Train/development/test splits}
+Seeds $0$--$9$; stratified $60/20/20$ train/development/test; masks under \texttt{data/splits/}.
+The middle partition is termed the development set throughout.
+
+\section{S4 Leakage audit}
+\begin{center}\small
+\begin{tabular}{@{}p{2.4cm}p{2.2cm}p{2.2cm}p{2.2cm}p{3.4cm}@{}}
+\toprule
+Stage & Train & Dev & Test & Permitted use \\
+\midrule
+Features & Yes & Yes & Yes & Shared $X$; no label-dependent featurization \\
+Splits & Yes & Yes & Yes & Stratify masks only \\
+Teacher $\Delta_{\mathrm{task}}$ & Yes & Yes (TD mask) & No & CE on train$\cup$development \\
+Scorer fit & Yes & Used in grid & No & Fixed epoch loops in reported grid \\
+Teacher size $n$ & --- & Yes (Facebook) & No & Select on development Macro-F1 @50\% \\
+Final eval & --- & --- & Yes & After configuration is fixed \\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent\textit{Note.}
+The middle partition is a development set, not an independent validation hold-out: it participates in teacher-target construction and Facebook teacher-size selection.
+This is not test leakage, but the protocol is not fully validation-isolated.
+A stricter design would construct teacher targets from training labels only and reserve development exclusively for configuration selection.
+
+\section{S5 Counterfactual teacher}
+CILP uses a composite multi-criteria teacher that combines deletion-induced effects with structural proxies.
+\texttt{ExactCounterfactualTeacher.score\_edges} samples $n$ edges and returns $y^{\mathrm{cf}}$ plus component vectors.
+The task-only teacher uses only the classification-loss component under the same encoder and concatenation fusion.
+
+\section{S6 Exact deletion-importance criteria}
+
+\paragraph{Task loss (deletion-induced).}
+With frozen encoder/classifier,
+$\Delta_{\mathrm{task}}=\mathrm{CE}_{TD}(G_{-e})-\mathrm{CE}_{TD}(G)$ on train$\cup$development nodes.
+
+\paragraph{Connectivity change (deletion-induced).}
+\[
+\Delta_{\mathrm{conn}}(e{=}\{u,v\})
+=\mathbf{1}[e\textrm{ is a bridge}]
++(\#\mathrm{comp}(G_{-e})-\#\mathrm{comp}(G))
++\max(0,\mathrm{giant}(G)-\mathrm{giant}(G_{-e}))/|V|.
+\]
+
+\paragraph{Representation shift (deletion-induced).}
+$\Delta_{\mathrm{repr}}(e)=\mathrm{mean}_i\|h_i(G)-h_i(G_{-e})\|_2$.
+
+\paragraph{Group impact (deletion-induced).}
+$\Delta_{\mathrm{group}}(e)=\max(0, F1^{\mathrm{worst}}_{\mathrm{dev}}(G)-F1^{\mathrm{worst}}_{\mathrm{dev}}(G_{-e}))$.
+
+\paragraph{Community-boundary proxy (structural proxy).}
+Implemented as \texttt{community\_effect} in
+\newline
+\path{src/counterfactual/exact_teacher.py}.
+A Louvain partition $C$ is computed \emph{once} on the full undirected graph $G$ via \texttt{community.best\_partition} (python-louvain) and reused for all sampled edges; the partition is not recomputed after each deletion.
+Let $m=|E|$, $d_u=\deg(u)$, $d_v=\deg(v)$, $a_{uv}=1$, and
+$\mathrm{same}=\mathbf{1}[C(u)=C(v)]$.
+Define
+\[
+\mathrm{expected}=\frac{d_u d_v}{2m},\qquad
+\mathrm{local}=
+\begin{cases}
+a_{uv}-\mathrm{expected} & \text{if }\mathrm{same}=1,\\
+|a_{uv}-\mathrm{expected}| & \text{if }\mathrm{same}=0,
+\end{cases}
+\qquad
+\mathrm{inter}=
+\begin{cases}
+0 & \text{if }\mathrm{same}=1,\\
+1 & \text{if }\mathrm{same}=0.
+\end{cases}
+\]
+The returned score is
+\[
+\Delta_{\mathrm{comm}}(e)=\max(0,\mathrm{local})+\mathrm{inter}.
+\]
+Higher values indicate greater estimated removal harm.
+The explicit $\mathrm{inter}$ term assigns additional harm to \emph{inter-community} edges, so the criterion preferentially protects community-boundary connectors rather than maximizing modularity after sparsification.
+We therefore call it a community-boundary proxy, not a direct community-preservation metric.
+The modularity value $Q(C,G)$ is computed in code but is not used in the returned score.
+If python-louvain is unavailable, the fallback is
+$\Delta_{\mathrm{comm}}=|\mathrm{clust}(u;G)-\mathrm{clust}(u;G_{-e})|+|\mathrm{clust}(v;G)-\mathrm{clust}(v;G_{-e})|$.
+Reported experiments used the Louvain path.
+
+\paragraph{Degree-based spectral proxy (structural proxy).}
+For all currently reported datasets (LastFM, Facebook, and GitHub), $|V|>400$, so
+\[
+\Delta_{\mathrm{spec}}(e{=}\{u,v\})=\frac{1}{\max(d_u,1)}+\frac{1}{\max(d_v,1)}.
+\]
+This is a degree-based spectral surrogate, not a recomputation of Laplacian eigenvalue change.
+The eigenspectrum variant $\|\lambda_{\mathrm{norm}}[1{:}4](G)-\lambda_{\mathrm{norm}}[1{:}4](G_{-e})\|_2$ is used only when $|V|\le 400$ and was not used for the three reported datasets.
+Function: \texttt{spectral\_effect} in the same module.
+
+\paragraph{Aggregation.}
+\[
+y_e^{\mathrm{cf}}=\mathrm{minmax}\Big(\sum_k\beta_k\,\mathrm{minmax}(\Delta_k(e))\Big),
+\]
+with fixed $\beta=(1.0,0.5,1.0,0.3,0.5,0.5)$ for
+(task, community-boundary proxy, connectivity, degree-based spectral proxy, representation, group),
+identical across datasets and not development-tuned.
+Zero range ($h-l<10^{-12}$) maps to zeros (\texttt{normalize\_scores}).
+The task-only teacher uses $y=\mathrm{minmax}(\Delta_{\mathrm{task}})$.
+
+\section{S7 Teacher-edge sampling}
+Teacher edges are sampled without replacement by \texttt{stratified\_edge\_sample}
+(\path{src/counterfactual/sampling.py}).
+Procedure for sample size $n$ on $m$ undirected edges:
+\begin{enumerate}[leftmargin=1.4em]
+\item If $m\le n$, return all edges.
+\item Compute per-edge degree-sum $\deg(u)+\deg(v)$ and feature cosine similarity between endpoints.
+\item Form $4\times 4$ quantile strata (degree-sum quartiles $\times$ cosine quartiles; $16$ nominal keys).
+\item Allocate $\lfloor n/\#\mathrm{nonempty\ strata}\rfloor$ (at least one when possible) by shuffling stratum keys and sampling without replacement within each stratum.
+\item If fewer than $n$ edges are selected, fill the remainder by uniform sampling without replacement from unselected edges.
+\end{enumerate}
+Empty strata contribute nothing and are skipped.
+Labels, communities, and bridge status are \emph{not} used for stratification.
+Reported defaults therefore implement degree$\times$feature stratified sampling, not uniform sampling and not label- or community-stratified sampling.
+
+\section{S8 Teacher-size sensitivity}
+Facebook seed~$0$ diagnostic for $n\in\{20,40,80,120\}$ at removal rates $0.3$, $0.5$, and $0.7$.
+\textbf{Selection rule (as implemented):} teacher size $n{=}120$ was selected by ranking variants on development Macro-F1 at $50\%$ edge removal (\texttt{scripts/run\_facebook\_diagnostic.py}).
+Mean development Macro-F1 across $\{0.3,0.5,0.7\}$ is reported for transparency; $n{=}80$ and $n{=}120$ are close (means $0.9325$ vs $0.9334$), and $n{=}120$ does not dominate at every removal rate.
+The $n{=}40$ result is retained as a negative pilot.
+\begin{center}\scriptsize
+\input{tables/s8_teacher_size.tex}
+\end{center}
+\begin{center}
+\includegraphics[width=0.72\linewidth]{figures/fig_s8_teacher_size.pdf}
+\end{center}
+
+\section{S9 Edge scorer and training losses}
+GCN (2 layers, hidden 64, dropout 0.4); concatenation fusion in the core comparison; heteroscedastic decoder;
+$\mathcal{L}=0.5\,\mathcal{L}_{\mathrm{CE}}+1.0\,\mathcal{L}_{\mathrm{NLL}}+0.2\,\mathcal{L}_{\mathrm{hinge}}$
+with ranking margin $0.1$ and $256$ sampled pairs.
+Gated and cross-attention fusions are ablations only.
+
+\section{S10 Uncertainty estimation}
+$\sigma_e=\exp(\tfrac12\log\sigma_e^2)$ via Gaussian NLL with variance floor $10^{-6}$ and $\log\sigma^2$ clamped to $[-8,4]$.
+Pruning does \textbf{not} use $\sigma_e$; ranking uses $\mu_e$ only.
+
+\section{S11 Exact-budget pruning}
+\begin{algorithm}[H]
+\caption{Unconstrained exact-budget prune (reported comparison)}
+\begin{algorithmic}[1]
+\Require importance $\mu$, removal rate $r$, undirected edge count $m$
+\State $n_{\mathrm{keep}}\leftarrow m-\mathrm{round}(r\cdot m)$
+\State Keep the top $n_{\mathrm{keep}}$ edges by descending $\mu$
+\end{algorithmic}
+\end{algorithm}
+Implementation uses \texttt{torch.argsort(importance, descending=True)} without \texttt{stable=True}.
+Tie order among equal $\mu$ values is therefore implementation-dependent and is not claimed to be stable.
+Constraint-aware mode exists in code but is disabled in the reported multi-seed comparison.
+
+\section{S12 Baseline implementation details}
+All baselines are converted to the same exact-budget prune: keep the top $(1-r)|E|$ undirected edges by descending score via \texttt{budget\_prune\_unconstrained}.
+They are simplified reimplementations adapted to this protocol, not bit-for-bit reproductions of the original publications.
+
+\paragraph{Random.}
+Uniform random scores in $[0,1]$ with seed-controlled RNG; higher score kept.
+No training.
+
+\paragraph{ILP-GCN.}
+Two-layer GCN encoder (hidden $64$) with MLP link scorer trained by positive/negative edge BCE for \texttt{ilp\_epochs} (LastFM/Facebook/GitHub: $25/20/15$).
+Importance follows the parent ILP form $W_{\mathrm{ILP}}=\alpha/(S+\varepsilon)$ mixed with uniform initial weights ($\gamma{=}0.5$); higher $W$ is retained.
+Code: \path{src/sparsification/original_ilp.py}.
+
+\paragraph{NeuralSparse.}
+Simplified task-driven scorer: one GCN layer + MLP edge head; joint Adam training with node-classification CE on the train mask minus $0.01\times\mathrm{mean}(\mathrm{score})$ for \texttt{ilp\_epochs} epochs (same schedule as ILP-GCN in the grid).
+After training, sigmoid edge scores are pruned under the exact budget.
+This is not the full NeuralSparse $k$-neighbor sampler from Zheng et al.; it is a matched-budget adaptation.
+Code: \path{src/sparsification/baselines/neuralsparse.py}.
+
+\paragraph{PTDNet.}
+Simplified topological-denoising scorer: two GCN layers + MLP denoise head; loss $=$ train-mask CE $+\,0.1\times\mathrm{mean}(\mathrm{score})$ for \texttt{ilp\_epochs} epochs.
+Sigmoid scores are pruned under the exact budget.
+Not a full reproduction of Luo et al.'s PTDNet; matched-budget adaptation.
+Code: \path{src/sparsification/baselines/ptdnet.py}.
+
+\paragraph{Resistance proxy.}
+Effective-resistance-inspired ranking (degree-based / structural proxy path in \texttt{effective\_resistance\_proxy}).
+It is not an independent reproduction of DSpar.
+Duplicate records from the same resistance-based implementation were removed before aggregation ($n{=}10$ seeds).
+
+\section{S13 Hyperparameters and training stages}
+Four distinct training stages appear in the CILP pipeline (plus downstream evaluation):
+\begin{center}\small
+\begin{tabular}{@{}p{3.0cm}p{4.2cm}p{5.4cm}@{}}
+\toprule
+Stage & Epochs (LF/FB/GH) & Role \\
+\midrule
+Teacher encoder pretrain & $25/25/15$ & Frozen encoder/classifier for counterfactual probes \\
+Surrogate MLP fit & $60/60/60$ & Fit \texttt{SurrogateEdgeImportance} on sampled teacher labels; expands targets to all edges for NLL; also yields S19 metrics \\
+CILP scorer train & $25/25/15$ & End-to-end \texttt{CAILPSocial}; pruning uses its $\mu_e$ \\
+Downstream GCN eval & $50/40/35$ & Fresh GCN on $G_r$ after pruning \\
+ILP/NS/PTDNet train & $25/20/15$ & Baseline scorer epochs (not used by CILP) \\
+\bottomrule
+\end{tabular}
+\end{center}
+``Surrogate epochs'' and ``scorer epochs'' are therefore different models: the $60$-epoch surrogate is not the ranking scorer.
+\input{tables/s13_hyperparameters.tex}
+
+\section{S14 Complete per-budget results}
+\input{tables/s14_full.tex}
+
+\section{S15 Full per-seed results}
+Machine-readable: \texttt{results/processed/authoritative\_results.csv}
+($1{,}890$ rows; unique key dataset$\times$method$\times$seed$\times$edge\_removal\_rate).
+The Stage~A freeze archive and checksums are recorded in \texttt{docs/stage\_a\_freeze\_manifest.md}.
+
+\section{S16--S18 Paired statistical comparisons}
+Hypothesis tests: two-sided Wilcoxon signed-rank on paired seed-wise differences (SciPy \texttt{wilcoxon}; \texttt{zero\_method='wilcox'}, \texttt{correction=False}, \texttt{method='auto'}).
+Confidence intervals: mean difference $\pm t_{0.975,n-1}\mathrm{SEM}$ from the paired $t$ sampling distribution; paired $t$ $p$-values are computed in the analysis scripts but are not the primary reported tests.
+Holm family~(ii) adjusts Wilcoxon $p$-values across CILP-versus-baseline AUC contrasts within each dataset.
+\input{tables/s16_18_paired.tex}
+
+\section{S19 Surrogate-quality metrics}
+\begin{center}\scriptsize
+\input{tables/s19_summary.tex}
+\end{center}
+\noindent On GitHub, CILP has higher Spearman/Kendall agreement while Task-only has lower raw MAE and ECE is essentially tied.
+Because sparsification ranks edges for deletion, rank correlation is the primary surrogate diagnostic; absolute MAE can favour flat predictors that are poor rankers.
+Top-$k$ overlap and normalized MAE relative to target scale are recommended extensions.
+
+\section{S20 Ablation study}
+LastFM ablations (seeds $0$--$4$) are grouped scientifically below.
+Facebook ablations were incomplete at the time of analysis.
+Adversarial variants were omitted after a negative pilot.
+
+\begin{center}\scriptsize
+\begin{tabular}{@{}p{2.1cm}p{2.4cm}p{2.0cm}p{1.6cm}p{1.4cm}p{1.2cm}p{1.6cm}@{}}
+\toprule
+Group & Scientific name & Teacher & Prior & Fusion & Seeds & Status \\
+\midrule
+Fusion & Concatenation & multi-criteria & none & concat & 0--4 & complete \\
+Fusion & Gated fusion & multi-criteria & none & gated & 0--4 & complete \\
+Fusion & Cross-attention & multi-criteria & none & cross-attn & 0--4 & complete \\
+Node prior & No node prior & multi-criteria & none & concat & 0--4 & complete \\
+Node prior & Analytical mass & multi-criteria & analytical & concat & 0--4 & complete \\
+Node prior & Degree prior & multi-criteria & degree & concat & 0--4 & complete \\
+Node prior & PageRank prior & multi-criteria & PageRank & concat & 0--4 & complete \\
+Node prior & Black Hole-inspired & multi-criteria & Black Hole & concat & 0--4 & complete \\
+Teacher & Multi-criteria & multi-criteria & none & concat & 0--4 & complete \\
+Teacher & Task-only & task-only & none & concat & 0--4 & complete \\
+Optional & Adversarial variants & --- & --- & --- & --- & rejected / skipped \\
+Context & ILP-GCN & N/A & N/A & N/A & 0--4 & complete \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Budgets reported in ablation figures: $0.3$, $0.5$, $0.7$.
+Repository identifiers for these variants appear only in S29.
+
+\section{S21 Multi-criteria versus task-only supervision}
+We tested whether combining multiple deletion-importance criteria improves edge ranking relative to task-only supervision under the same encoder, fusion, optimization, budgets, and paired seeds.
+\textbf{Family~(i) definition:} for each dataset, four paired metrics (CILP $-$ Task-only) form one family:
+(i) sparsity--Macro-F1 AUC;
+(ii) giant-component ratio at $50\%$;
+(iii) bridge retention at $50\%$;
+(iv) minority-degree retention at $50\%$.
+Holm adjustment is applied to Wilcoxon $p$-values within each dataset family~(i).
+\textbf{Family~(ii):} within each dataset, CILP-versus-baseline AUC contrasts form a separate Holm family (Supplementary Information~S16--S18); adjusted $p$-values are not interchangeable with family~(i).
+\textbf{Decision rule:} multi-criteria supervision is supported across datasets when at least two metrics are supported (positive $\Delta$, Holm $p{<}0.05$) on at least two datasets.
+The analysis rule was fixed before completion and integration of the GitHub grid; we do not claim timestamped preregistration beyond the Stage~A freeze record.
+On LastFM, Facebook, and GitHub the within-dataset criterion is met (4/4 metrics each); multi-criteria supervision therefore satisfies the fixed support criterion on all three datasets.
+This support is relative to the matched Task-only teacher and does not imply that CILP outperforms all established sparsifiers.
+\input{tables/s21_paired_multidim.tex}
+
+\section{S22 Structural and group metrics}
+Means at $50\%$ removal appear below; multi-budget ($30/50/70\%$) giant-component and bridge values are also reported in the main manuscript.
+\begin{center}\scriptsize
+\input{tables/s22_structure.tex}
+\end{center}
+
+\section{S23 Runtime}
+\texttt{train\_seconds} includes teacher construction and scorer fitting for CILP and Task-only; these components were not separately logged, so dominance cannot be attributed to teacher construction alone.
+\begin{center}\scriptsize
+\input{tables/s23_table.tex}
+\end{center}
+
+\section{S24 Failure cases and rejected hypotheses}
+Adversarial pilot (LastFM seed 0, $50\%$): Macro-F1 $\approx0.666$ vs core $\approx0.829$.
+Facebook teacher $n{=}40$ underperformed the development-selected $n{=}120$ setting (S8).
+Stage~A GitHub grid: no method failures across seeds $0$--$9$, seven methods, and budgets $0.1$--$0.9$.
+
+\section{S25 Constraint shortfalls}
+Reported comparison: constraints off; achieved removals match requested budgets exactly under unconstrained ranking.
+
+\section{S26 Reproducibility checklist}
+Processed authoritative CSV/JSON ($1{,}890$ rows); Stage~A freeze manifest with SHA-256 checksums; consistency validator; fixed splits for all three datasets; negative pilots retained; figure provenance notes.
+Paths: \path{docs/stage_a_freeze_manifest.md}, \path{docs/figure_data_provenance.md}.
+
+\section{S27 Software and hardware}
+Reported multi-seed runs used CPU execution (\texttt{device=cpu} in experiment logs); MPS is disabled in the device helper because several PyG scatter operations are unsupported.
+Exact CPU model, core counts, and RAM for the machines that produced every grid row are not stored as structured metadata in the repository and therefore cannot be uniquely recovered.
+Environment specification files declare Python 3.10 (\texttt{environment.yml}, \texttt{Dockerfile}); analysis regeneration on the present workstation used Python 3.9.6 with:
+PyTorch 2.4.0, PyTorch Geometric 2.6.1, NetworkX 3.2.1, NumPy 1.26.4, SciPy 1.13.1, scikit-learn 1.6.1, matplotlib 3.9.4.
+No \texttt{pip freeze} lockfile is present; \texttt{requirements.txt} lists version floors only.
+BLAS backend was not recorded in experiment logs.
+
+\section{S28 Data and code availability details}
+Public SNAP/MUSAE releases for LastFM, Facebook, and GitHub.
+Processed graphs: \path{data/processed/}.
+Fixed splits: \path{data/splits/}.
+Authoritative store: \path{results/processed/authoritative_results.csv} ($1{,}890$ rows).
+GitHub raw per-seed outputs: \path{results/raw/grid/}.
+Stage~A freeze archive: \path{results/frozen/}.
+Regenerated figures/tables: \path{paper/}.
+Regeneration and consistency-check scripts: \path{scripts/}.
+No DOI is claimed in this draft.
+
+\section{S29 Repository ID mapping}
+Internal experiment identifiers appear only in this table.
+\input{tables/internal_id_mapping.tex}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,29 @@
+experiment: facebook_lite
+dataset: facebook
+seed: 0
+device: auto
+encoder:
+  type: gcn
+  hidden_dim: 64
+  num_layers: 2
+  dropout: 0.4
+  heads: 4
+fusion: concat
+teacher:
+  n_sample: 40
+  epochs_downstream: 20
+  single_objective: false
+train:
+  epochs: 20
+  lr: 0.001
+  lambda_cf: 1.0
+  lambda_rank: 0.2
+  lambda_task: 0.5
+budgets: [0.5]
+downstream:
+  kinds: [gcn]
+  epochs: 40
+optional:
+  node_mass: false
+  adversarial: false
+track: A

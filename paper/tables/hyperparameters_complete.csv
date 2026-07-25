@@ -1,0 +1,49 @@
+group,parameter,value,source
+Model,encoder_type,gcn,run_full_grid.py CAILPConfig
+Model,num_layers,2,run_full_grid.py CAILPConfig
+Model,hidden_dim,64,run_full_grid.py CAILPConfig
+Model,dropout (CAILP),0.4,run_full_grid.py CAILPConfig
+Model,fusion (core),concat,run_full_grid.py
+Model,decoder,"ImportanceDecoder hidden 64, dropout 0.2, ReLU",importance_decoder.py
+Model,mu activation,sigmoid,importance_decoder.py
+Model,logvar clamp,"[-8, 4]",importance_decoder.py
+Model,LayerNorm in fusion,yes (ConcatFusion),cross_attention.py
+Model,NodeEncoder residual/norm defaults,"residual=True, norm=True",node_encoders.py
+Optimization,optimizer (CAILP),Adam,run_full_grid.py
+Optimization,learning_rate (CAILP),1e-3,run_full_grid.py
+Optimization,weight_decay (CAILP),Not explicitly configured; library default used (0.0),torch.optim.Adam
+Optimization,scheduler,Not explicitly configured; none used,run_full_grid.py
+Optimization,teacher_encoder_lr,1e-2,run_full_grid.py pretrain_encoder
+Optimization,surrogate_epochs,60,run_full_grid.py
+Optimization,surrogate_hidden,64,run_full_grid.py
+Optimization,early_stopping_patience,Not explicitly configured; fixed epoch loops,run_full_grid.py
+Optimization,batch_size,Not explicitly configured; full-batch graphs,run_full_grid.py
+Optimization,gradient_clipping,Not explicitly configured; none used,run_full_grid.py
+Optimization,downstream_classifier,"2-layer GCN, hidden 64, dropout 0.5",node_classification.py
+Optimization,downstream_lr,1e-2,node_classification.py
+Optimization,downstream_weight_decay,5e-4,node_classification.py
+Loss,lambda_CE,0.5,run_full_grid.py
+Loss,lambda_NLL,1.0,run_full_grid.py
+Loss,lambda_rank,0.2,run_full_grid.py
+Loss,ranking_margin,0.1,importance_decoder.py default
+Loss,ranking_num_pairs,256,importance_decoder.py default
+Loss,NLL variance floor,1e-6,importance_decoder.py
+Teacher,teacher_n LastFM,50,GRID_CFG
+Teacher,teacher_n Facebook,120,GRID_CFG; selected by val Macro-F1 @50%
+Teacher,teacher_n GitHub,40,GRID_CFG
+Teacher,teacher_epochs LastFM/Facebook/GitHub,25/25/15,GRID_CFG
+Teacher,scorer_epochs LastFM/Facebook/GitHub,25/25/15,GRID_CFG train_epochs
+Teacher,downstream_epochs LastFM/Facebook/GitHub,50/40/35,GRID_CFG
+Teacher,ilp_epochs LastFM/Facebook/GitHub,25/20/15,GRID_CFG
+Teacher,sampling,stratified_edge_sample without replacement,sampling.py / run_full_grid.py
+Teacher,beta,"(1.0,0.5,1.0,0.3,0.5,0.5)",CFCoefficients defaults
+Teacher,beta tuned?,No; fixed across datasets,exact_teacher.py
+Teacher,zero-range handling,hi-lo<1e-12 → zeros,sampling.py::normalize_scores
+Pruning,rule,keep top (1-r)|E| by descending mu,budget_prune_unconstrained
+Pruning,rounding,n_keep = m - int(round(r*m)),constrained_pruning.py
+Pruning,ties,torch.argsort without stable=True; order not guaranteed,constrained_pruning.py
+Pruning,constraints,Disabled in reported multi-seed comparison,run_full_grid.py
+Statistics,CI,"mean ± t_0.975,n-1 × SEM",build_authoritative_results.py
+Statistics,paired tests,paired t + Wilcoxon on common seeds,generate_paper_tables.py
+Statistics,Holm scope,Within dataset over 4 CILP vs Task-only metrics,generate_paper_tables.py
+Statistics,effect size,dz = mean(diff)/sd(diff),generate_paper_tables.py

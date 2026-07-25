@@ -1,0 +1,29 @@
+experiment: pilot
+dataset: lastfm
+seed: 0
+device: auto
+encoder:
+  type: gcn
+  hidden_dim: 64
+  num_layers: 2
+  dropout: 0.4
+  heads: 4
+fusion: concat
+teacher:
+  n_sample: 60
+  epochs_downstream: 30
+  single_objective: false
+train:
+  epochs: 30
+  lr: 0.001
+  lambda_cf: 1.0
+  lambda_rank: 0.2
+  lambda_task: 0.5
+budgets: [0.3, 0.5, 0.7]
+downstream:
+  kinds: [gcn]
+  epochs: 60
+optional:
+  node_mass: false
+  adversarial: false
+track: A

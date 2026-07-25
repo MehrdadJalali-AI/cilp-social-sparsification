@@ -1,0 +1,28 @@
+[
+  {
+    "dataset": "github",
+    "method": "neuralsparse",
+    "seed": 0,
+    "removal_rate": 0.5,
+    "retained_edge_ratio": 0.49999826991415314,
+    "test_macro_f1": 0.7980736426879211,
+    "test_accuracy": 0.8576923076923076,
+    "test_worst_class_f1": 0.6883531803659599,
+    "val_macro_f1": 0.8054836825170133,
+    "giant_component_ratio": 0.7719893899204244,
+    "num_components": 8597.0,
+    "bridge_preservation": 0.36519748139668,
+    "degree_ks": 0.34299734748010613,
+    "clustering": 0.2435232028010529,
+    "minority_degree_retention": 0.2779549006942266,
+    "minority_isolation_rate": 0.39983571208542973,
+    "prune_seconds": 0.04122370899999339,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 5.016367625000001
+  }
+]

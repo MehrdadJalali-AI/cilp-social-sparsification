@@ -1,0 +1,15 @@
+[
+  {
+    "dataset": "lastfm",
+    "method": "cailp_adversarial",
+    "removal_rate": 0.5,
+    "unstable": false,
+    "test_accuracy": 0.8115561391989494,
+    "test_macro_f1": 0.6658385936190188,
+    "test_micro_f1": 0.8115561391989494,
+    "test_weighted_f1": 0.8051480822561295,
+    "test_balanced_accuracy": 0.612239765284758,
+    "test_kappa": 0.7837847329913272,
+    "test_worst_class_f1": 0.0
+  }
+]

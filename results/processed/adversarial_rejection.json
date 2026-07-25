@@ -1,0 +1,6 @@
+{
+  "included_in_core": false,
+  "pilot_lastfm_seed0_removal_0.5_macro_f1": 0.6658,
+  "core_cailp_same_setting_macro_f1": 0.829,
+  "status": "rejected_hypothesis_unless_overturned_by_multi_seed"
+}

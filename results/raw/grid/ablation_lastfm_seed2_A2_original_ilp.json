@@ -1,0 +1,83 @@
+[
+  {
+    "dataset": "lastfm",
+    "method": "A2_original_ilp",
+    "seed": 2,
+    "removal_rate": 0.3,
+    "retained_edge_ratio": 0.6999928073077754,
+    "test_macro_f1": 0.8061954110067372,
+    "test_accuracy": 0.8883782009192384,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.7756617953723408,
+    "giant_component_ratio": 0.9744228751311648,
+    "num_components": 157.0,
+    "bridge_preservation": 0.9865215137376879,
+    "degree_ks": 0.08066631689401889,
+    "clustering": 0.13837401699749613,
+    "minority_degree_retention": 0.9999999927272728,
+    "minority_isolation_rate": 0.0,
+    "prune_seconds": 0.014472165999904973,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 2.556175124999754,
+    "ablation": "A2_original_ilp"
+  },
+  {
+    "dataset": "lastfm",
+    "method": "A2_original_ilp",
+    "seed": 2,
+    "removal_rate": 0.5,
+    "retained_edge_ratio": 0.5,
+    "test_macro_f1": 0.7278849456976058,
+    "test_accuracy": 0.8627708470124754,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.69947875856096,
+    "giant_component_ratio": 0.8527019937040924,
+    "num_components": 984.0,
+    "bridge_preservation": 0.9144634525660964,
+    "degree_ks": 0.19425498426023086,
+    "clustering": 0.10208247836597252,
+    "minority_degree_retention": 0.9545454476033058,
+    "minority_isolation_rate": 0.0625,
+    "prune_seconds": 0.016174874999705935,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 2.556175124999754,
+    "ablation": "A2_original_ilp"
+  },
+  {
+    "dataset": "lastfm",
+    "method": "A2_original_ilp",
+    "seed": 2,
+    "removal_rate": 0.7,
+    "retained_edge_ratio": 0.3000071926922247,
+    "test_macro_f1": 0.6952463558181529,
+    "test_accuracy": 0.8384766907419566,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.6516304123335941,
+    "giant_component_ratio": 0.5919464847848899,
+    "num_components": 2856.0,
+    "bridge_preservation": 0.709694142042509,
+    "degree_ks": 0.38562434417628544,
+    "clustering": 0.06232692240416379,
+    "minority_degree_retention": 0.7727272671074381,
+    "minority_isolation_rate": 0.25,
+    "prune_seconds": 0.015008374999979424,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 2.556175124999754,
+    "ablation": "A2_original_ilp"
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "dataset": "github",
+    "method": "random",
+    "seed": 0,
+    "removal_rate": 0.5,
+    "retained_edge_ratio": 0.49999826991415314,
+    "test_macro_f1": 0.8086249229377482,
+    "test_accuracy": 0.8629973474801061,
+    "test_worst_class_f1": 0.7066174382277762,
+    "val_macro_f1": 0.8096982097384731,
+    "giant_component_ratio": 0.8722015915119363,
+    "num_components": 4632.0,
+    "bridge_preservation": 0.5006678114863575,
+    "degree_ks": 0.21233421750663134,
+    "clustering": 0.05975372847426188,
+    "minority_degree_retention": 0.4996550091548912,
+    "minority_isolation_rate": 0.15710031830783447,
+    "prune_seconds": 0.15564175000000002,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 0.00540070799999981
+  }
+]

@@ -1,0 +1,7 @@
+Criterion,Category,Exact formula,Direction,Normalization,Weight β,Code location
+Task loss,Deletion-induced,CE_TV(G_{-e}) - CE_TV(G) on train∪val,Higher = more harmful,Min-max over teacher sample,1.0,exact_teacher.py::task_and_repr_and_group_effects
+Connectivity change,Deletion-induced,"1[bridge]+(n_comp(G_{-e})-n_comp(G))+max(0,giant(G)-giant(G_{-e}))/|V|",Higher = more harmful,Min-max over teacher sample,1.0,exact_teacher.py::connectivity_effect
+Representation shift,Deletion-induced,mean_i ||h_i(G)-h_i(G_{-e})||_2,Higher = more harmful,Min-max over teacher sample,0.5,exact_teacher.py::task_and_repr_and_group_effects
+Group impact,Deletion-induced,"max(0, F1_worst_val(G)-F1_worst_val(G_{-e}))",Higher = more harmful,Min-max over teacher sample,0.5,exact_teacher.py::task_and_repr_and_group_effects
+Community proxy,Structural proxy,"max(0,local)+inter; local=(1-du*dv/(2m)) if same community else |1-du*dv/(2m)|; inter=0 if same else 1; Louvain once on G",Higher = more harmful,Min-max over teacher sample,0.5,exact_teacher.py::community_effect
+Degree-based spectral proxy,Structural proxy,"For |V|>400 (all reported datasets): 1/du+1/dv with du,dv>=1; else ||λ_norm[1:4](G)-λ_norm[1:4](G_{-e})||_2",Higher = more harmful,Min-max over teacher sample,0.3,exact_teacher.py::spectral_effect

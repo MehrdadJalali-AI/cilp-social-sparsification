@@ -1,0 +1,25 @@
+\section{Introduction}
+\label{sec:intro}
+
+Attributed social networks used for recommendation, influence analysis, and community detection are large and edge-rich: edge counts are substantial even when classical density $2|E|/(|V|(|V|-1))$ is small.
+Message-passing graph neural networks (GNNs) scale with the number of edges: each training epoch aggregates neighbourhood messages, stores activations, and pays memory proportional to edge volume~\citep{kipf2017semi,rong2020dropedge}.
+Reducing edges under an exact removal budget therefore addresses a concrete big-data systems constraint---storage, communication, and wall-clock training cost---provided downstream predictive utility and key connectivity properties are not destroyed~\citep{zheng2020neuralsparse,luo2021ptdnet,spielman2011graph}.
+
+This paper sits at the intersection of link prediction, inverse link prediction, and graph sparsification.
+Link prediction estimates missing or future edges~\citep{liben2007link,martinez2016survey}.
+Inverse link prediction reverses that direction: it ranks \emph{existing} edges by deletion harm under a budget, aiming to preserve utility rather than to invent new links~\citep{bangian2025ilp}.
+Structure-preserving and spectral sparsification motivate edge removal while retaining important graph properties~\citep{lindner2015structure,hamann2016structure,chen2024demystifying,feng2016spectral,spielman2011graph}; learned GNN sparsifiers further show that pruning can be task-aware~\citep{zheng2020neuralsparse,luo2021ptdnet,li2020sgcn}.
+Inverse link prediction with graph convolutional networks was introduced for cheminformatics similarity graphs by Bangian Tabrizi, Jalali and Houshmand~\citep{bangian2025ilp}; we refer to that parent method as the original ILP-GCN method, and thereafter as ILP-GCN.
+Counterfactual Inverse Link Prediction (CILP) extends ILP-GCN to attributed social networks through composite counterfactual supervision: a multi-criteria teacher labels deletion importance, a GCN scorer learns the ranking, and edges are removed under equal exact budgets.
+
+Edge deletion is established in counterfactual GNN explanation~\citep{lucic2022cfgnn,pradoromero2022gretel,funke2022zorro,mastropietro2022edgeshaper}, and learning edge importance for pruning is likewise established~\citep{zheng2020neuralsparse,luo2021ptdnet,rong2020dropedge,li2020sgcn}.
+CILP does not claim to invent edge deletion, edge scoring, graph sparsification, or counterfactual GNN explanation.
+Its methodological element is a composite multi-criteria teacher that combines deletion-induced effects with structural proxies, learned by a GCN scorer and applied under matched exact budgets.
+Counterfactual probing is expensive on CPU, but for a fixed graph and seed the teacher/scorer are built once and then reused to produce rankings at every removal budget $r\in\{0.1,\ldots,0.9\}$.
+This amortizes construction across budgets for that seed; it does not by itself demonstrate amortization across repeated independent downstream training runs.
+We compare CILP with an architecturally matched task-only teacher---the central controlled comparison---and with ILP-GCN, PTDNet, NeuralSparse, Random, and a Resistance proxy.
+The evaluation covers three attributed social networks (LastFM Asia, Facebook Page-Page, and GitHub Developers) with ten paired seeds and removal rates $0.1$--$0.9$.
+Methods are judged under equal removal budgets; the main claim is a consistent multi-criteria-supervision benefit relative to the matched task-only teacher, not overall leadership over every baseline.
+We do not claim large-scale GPU throughput: the reported implementation is CPU-bound, and CILP training (teacher construction plus scorer fitting) remains substantially more expensive than lighter baselines.
+
+The remainder of the paper follows a Methodology organization: related work, the proposed CILP method, experimental setup, results, discussion, and conclusions.

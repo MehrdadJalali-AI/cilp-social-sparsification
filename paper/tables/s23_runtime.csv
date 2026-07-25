@@ -1,0 +1,15 @@
+dataset,method,n_seeds,train_mean,train_sd,prune_mean,prune_sd
+lastfm,cailp_multi,10,198.3973,89.2455,0.167317,0.126406
+lastfm,cailp_a31,10,254.6289,149.0012,0.116642,0.119825
+lastfm,original_ilp,10,5.2000,2.0497,0.071312,0.081553
+lastfm,ptdnet,10,2.5741,0.7190,0.134453,0.121748
+lastfm,neuralsparse,10,4.0936,1.4085,0.051773,0.082230
+lastfm,random,10,0.0086,0.0086,0.166069,0.090501
+lastfm,resistance_proxy,10,0.1558,0.0705,0.170069,0.081965
+facebook,cailp_multi,4,1674.6190,623.9196,0.080502,0.053964
+facebook,cailp_a31,6,1944.5028,490.3959,0.071526,0.052397
+facebook,original_ilp,6,9.3134,2.2438,0.143590,0.102432
+facebook,ptdnet,6,5.4653,1.7975,0.151539,0.120869
+facebook,neuralsparse,6,7.2188,2.3359,0.151802,0.117901
+facebook,random,6,0.0033,0.0016,0.153389,0.125078
+facebook,resistance_proxy,6,0.0442,0.0116,0.138111,0.112156

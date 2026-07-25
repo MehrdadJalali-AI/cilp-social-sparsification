@@ -1,0 +1,58 @@
+\section{Experimental setup}
+\label{sec:setup}
+
+\subsection{Datasets and preprocessing}
+LastFM Asia and GitHub Developers are obtained from SNAP archives; Facebook Page-Page from MUSAE~\citep{rozemberczki2021multi}.
+Edges are symmetrized; self-loops and duplicate undirected edges are removed; bag-of-words indices are expanded to multi-hot features.
+Table~\ref{tab:datasets} summarizes sizes.
+Although classical densities are low (${\sim}4{\times}10^{-4}$--$1{\times}10^{-3}$), edge volumes are large enough to contribute substantially to GNN message-passing cost.
+All three datasets are included in the completed multi-seed evaluation.
+
+\begin{table}[t]
+\centering
+\caption{\textbf{Dataset characteristics.}}
+\label{tab:datasets}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Dataset & Nodes & Edges & Classes & Feature dim. \\
+\midrule
+LastFM Asia & 7\,624 & 27\,806 & 18 & 7\,842 \\
+Facebook Page-Page & 22\,470 & 170\,823 & 4 & 4\,714 \\
+GitHub Developers & 37\,700 & 289\,003 & 2 & ${\sim}$4\,005 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Splits and leakage control}
+Seeds $0$--$9$ use stratified $60/20/20$ node masks shared by every method on each dataset.
+We refer to the middle partition as a \emph{development} set rather than an independent validation set: it is used both in teacher $\Delta_{\mathrm{task}}$ construction (cross-entropy on train$\cup$development) and, for Facebook, in teacher-size selection (development Macro-F1 at $50\%$ removal).
+Test labels are used only for final evaluation after the configuration is fixed (Supplementary Information~S4).
+This is not test leakage, but the development partition is not a fully isolated model-selection hold-out.
+A stricter protocol that builds teacher targets from training labels alone is left as a recommended refinement.
+Facebook teacher size $n{=}120$ was selected by development Macro-F1 at $50\%$ removal; LastFM uses $n{=}50$; GitHub uses $n{=}40$.
+GitHub teacher/scorer/downstream/ILP epoch budgets are $15/15/35/15$; criterion weights $\beta$ are fixed and identical across datasets.
+
+\subsection{Baselines and matched control}
+Comparators: Random, ILP-GCN~\citep{bangian2025ilp}, Task-only (matched ablation), NeuralSparse, PTDNet~\citep{zheng2020neuralsparse,luo2021ptdnet}, and Resistance proxy~\citep{spielman2011graph}.
+The Resistance proxy implements an effective-resistance-inspired ranking; it is not an independent reproduction of DSpar.
+Duplicate records from the same resistance-based implementation were removed before aggregation.
+
+\subsection{Evaluation metrics and statistics}
+We report Macro-F1, sparsity--Macro-F1 AUC over removal rates $0.1$--$0.9$, giant-component ratio, bridge retention, minority-degree retention, surrogate agreement, and wall-clock training time.
+Paired Wilcoxon signed-rank tests are used for hypothesis testing; paired $t$-distributions supply confidence intervals for mean differences (intervals are not accompanied by paired $t$ $p$-values in the tables).
+Wilcoxon tests are two-sided, applied to paired seed-wise differences with SciPy defaults (\texttt{zero\_method='wilcox'}, \texttt{correction=False}, \texttt{method='auto'}; for $n{=}10$ this yields an exact enumeration when no ties force an approximation).
+Zero differences are discarded under \texttt{wilcox}; remaining ties among nonzero ranks follow SciPy's standard mid-rank handling.
+Effect sizes use paired $d_z$; intervals use $t_{0.975,n-1}\mathrm{SEM}$~\citep{wilcoxon1945individual,holm1979simple,cohen1988statistical}.
+Two Holm families are distinguished:
+(i)~within each dataset, the four CILP-versus-Task-only metrics (AUC; giant-component, bridge, and minority-degree retention at $50\%$);
+(ii)~within each dataset, CILP-versus-baseline AUC contrasts across methods.
+Adjusted $p$-values are therefore not interchangeable across families.
+Multi-criteria supervision is treated as supported on a dataset when at least two of the four seed-aligned metrics improve under identical fusion after Holm adjustment in family~(i); across-dataset support requires that criterion on at least two datasets (Supplementary Information~S21).
+The analysis rule was fixed before completion and integration of the GitHub grid; we do not claim timestamped preregistration outside the repository freeze record.
+
+\subsection{Computational protocol}
+All reported multi-seed runs used CPU execution in PyTorch Geometric; MPS is disabled in the device helper.
+Full hyperparameter and software details appear in Supplementary Information~S13 and~S27.
+Reported CILP and Task-only \texttt{train\_seconds} include teacher construction and scorer fitting; these components were not logged separately, so we do not attribute dominance to teacher construction alone.
+The full GitHub grid (seven methods, seeds $0$--$9$, budgets $0.1$--$0.9$) completed with no method failures; orchestration wall-clock was approximately $6.19$\,h.
+Per-method training times are reported from the authoritative runtime table and are distinct from that orchestration total.

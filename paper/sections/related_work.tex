@@ -1,0 +1,44 @@
+\section{Related work}
+\label{sec:related}
+
+This study sits at the intersection of link prediction, inverse link prediction, and graph sparsification.
+Classical link prediction asks which missing or future edges are likely to form~\citep{liben2007link,martinez2016survey}.
+Inverse link prediction reverses that question: given an exact removal budget, which \emph{existing} edges should be deleted so that predictive utility and selected structural properties are preserved~\citep{bangian2025ilp}.
+Graph sparsification provides the structural motivation for edge removal~\citep{lindner2015structure,hamann2016structure,chen2024demystifying,feng2016spectral,spielman2011graph}, while learned GNN sparsifiers show that pruning can be made task-aware rather than purely structural~\citep{luo2021ptdnet,zheng2020neuralsparse,li2020sgcn,li2022gcnsparsify}.
+Utility-aware evaluation in link recommendation further argues that accuracy alone is an incomplete performance lens~\citep{sanzcruzado2018novelty,mara2022evalne,li2017utility}.
+
+\subsection{Link prediction}
+The link-prediction problem for social networks estimates missing or future edges from network structure~\citep{liben2007link}.
+Surveys cover neighbourhood heuristics, path-based scores, probabilistic models, and embedding-based predictors~\citep{martinez2016survey}.
+That literature is concerned with \emph{adding} or recovering edges.
+CILP uses the same social-network setting but asks which edges to \emph{remove} under a budgeted sparsification objective.
+
+\subsection{Inverse link prediction and budgeted edge removal}
+ILP-GCN ranks existing edges for knowledge-preserving sparsification of cheminformatics similarity graphs~\citep{bangian2025ilp}.
+CILP retains the inverse-link-prediction question but changes the edge target, graph domain, selection rule, and evaluation protocol (Table~\ref{tab:advance}): a composite multi-criteria counterfactual teacher supervises a GCN scorer on attributed social networks under matched exact budgets.
+The present work is therefore an extension of inverse link prediction into utility-preserving social-network sparsification, not a new link-prediction accuracy method.
+
+\subsection{Structure-preserving and spectral sparsification}
+Structure-preserving sparsifiers rate edges by importance and filter globally or locally to retain connectivity, distances, communities, and centrality patterns in social networks~\citep{lindner2015structure,hamann2016structure}.
+Comparative studies show that no single sparsifier preserves all graph properties equally well; suitability depends on the downstream metric family~\citep{chen2024demystifying}.
+Spectral sparsification seeks sparse subgraphs whose Laplacians approximate the original spectrum, including effective-resistance sampling~\citep{spielman2011graph} and nearly-linear-time constructions based on spectral perturbation analysis~\citep{feng2016spectral}.
+CILP borrows structural proxies (community and degree-based spectral terms) as teacher components, but ranks edges for budgeted GNN utility rather than classical cut or Laplacian approximation alone.
+
+\subsection{Learned sparsification with graph neural networks}
+DropEdge randomly drops edges during training~\citep{rong2020dropedge}.
+NeuralSparse and PTDNet learn to remove task-irrelevant edges for robust representation learning~\citep{zheng2020neuralsparse,luo2021ptdnet}.
+SGCN and related GCN sparsifiers prune edges by optimization so that node-classification performance is retained on a sparser graph~\citep{li2020sgcn,li2022gcnsparsify}.
+Learning to prune is therefore established.
+CILP's distinct element is inverse-link-prediction-style scoring supervised by a composite counterfactual teacher under equal social-network budgets, with an architecturally matched task-only ablation as the primary controlled comparison.
+
+\subsection{Utility-aware evaluation beyond accuracy}
+Utility-based link recommendation incorporates value and cost beyond linkage likelihood~\citep{li2017utility}.
+Structural novelty and diversity metrics likewise argue that link-centric evaluation should consider network effects beyond predictive accuracy~\citep{sanzcruzado2018novelty}.
+Evaluation frameworks such as EvalNE systematize reproducible link-prediction assessment for network embeddings~\citep{mara2022evalne}.
+We adopt a related stance for sparsification: Macro-F1 under exact budgets is reported jointly with connectivity, bridge retention, and minority-degree retention, rather than accuracy alone.
+
+\subsection{Counterfactual GNN explanation}
+Graph counterfactual explanation methods intervene on graphs---often by deleting or editing edges---to change a GNN decision while remaining sparse or valid~\citep{lucic2022cfgnn,pradoromero2022gretel,funke2022zorro,mastropietro2022edgeshaper}.
+GRETEL formalizes evaluation practice for this family~\citep{pradoromero2022gretel}; Zorro emphasizes fidelity and stability~\citep{funke2022zorro}; EdgeSHAPer attributes edge contributions~\citep{mastropietro2022edgeshaper}.
+These methods target local explanation or recourse.
+CILP instead uses deletion probes and structural proxies to supervise global budgeted sparsification, which is a different objective from flipping an individual prediction with few edits~\citep{agarwal2023evaluating}.

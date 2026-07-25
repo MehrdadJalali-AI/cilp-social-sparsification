@@ -1,0 +1,8 @@
+dataset,method,method_display,n_seeds,seed_ids
+facebook,cailp_social_multi,CILP,10,0 1 2 3 4 5 6 7 8 9
+facebook,cailp_a31,Task-only,10,0 1 2 3 4 5 6 7 8 9
+facebook,original_ilp_gcn,ILP-GCN,10,0 1 2 3 4 5 6 7 8 9
+facebook,ptdnet,PTDNet,10,0 1 2 3 4 5 6 7 8 9
+facebook,neuralsparse,NeuralSparse,10,0 1 2 3 4 5 6 7 8 9
+facebook,random,Random,10,0 1 2 3 4 5 6 7 8 9
+facebook,resistance_style_proxy,Resistance proxy,10,0 1 2 3 4 5 6 7 8 9

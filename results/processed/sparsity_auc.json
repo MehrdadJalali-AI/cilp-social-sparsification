@@ -1,0 +1,202 @@
+[
+  {
+    "dataset": "facebook",
+    "method": "cailp_a31",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.7248928121769773,
+    "std": 0.01491480967032232,
+    "ci95_low": 0.7156485173694571,
+    "ci95_high": 0.7341371069844975,
+    "n": 10.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "cailp_multi",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.7391021496243756,
+    "std": 0.009954633325802901,
+    "ci95_low": 0.7329322039664302,
+    "ci95_high": 0.745272095282321,
+    "n": 10.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "cailp_multi_teacher120",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.373953285809715,
+    "std": 0.0,
+    "ci95_low": 0.373953285809715,
+    "ci95_high": 0.373953285809715,
+    "n": 1.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "cailp_multi_teacher20",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.35981074437486804,
+    "std": 0.0,
+    "ci95_low": 0.35981074437486804,
+    "ci95_high": 0.35981074437486804,
+    "n": 1.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "cailp_multi_teacher40",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.3620045060341974,
+    "std": 0.0,
+    "ci95_low": 0.3620045060341974,
+    "ci95_high": 0.3620045060341974,
+    "n": 1.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "cailp_multi_teacher80",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.37409683627743695,
+    "std": 0.0,
+    "ci95_low": 0.37409683627743695,
+    "ci95_high": 0.37409683627743695,
+    "n": 1.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "dspar",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.7108204323907648,
+    "std": 0.004695660102692182,
+    "ci95_low": 0.7079100321064372,
+    "ci95_high": 0.7137308326750923,
+    "n": 10.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "effective_resistance",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.7108204323907648,
+    "std": 0.004695660102692182,
+    "ci95_low": 0.7079100321064372,
+    "ci95_high": 0.7137308326750923,
+    "n": 10.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "neuralsparse",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.7214055924985034,
+    "std": 0.0032634294458444547,
+    "ci95_low": 0.719382897972206,
+    "ci95_high": 0.7234282870248009,
+    "n": 10.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "original_ilp",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.7419894064966203,
+    "std": 0.002842542552294964,
+    "ci95_low": 0.740227580369625,
+    "ci95_high": 0.7437512326236155,
+    "n": 10.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "ptdnet",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.7365313831610927,
+    "std": 0.004401160403461562,
+    "ci95_low": 0.7338035156814466,
+    "ci95_high": 0.7392592506407387,
+    "n": 10.0
+  },
+  {
+    "dataset": "facebook",
+    "method": "random",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.732249131601096,
+    "std": 0.003992148797472789,
+    "ci95_low": 0.729774772141266,
+    "ci95_high": 0.7347234910609259,
+    "n": 10.0
+  },
+  {
+    "dataset": "lastfm",
+    "method": "cailp_a31",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.5661961625760789,
+    "std": 0.050198685570403086,
+    "ci95_low": 0.5350826949140548,
+    "ci95_high": 0.5973096302381029,
+    "n": 10.0
+  },
+  {
+    "dataset": "lastfm",
+    "method": "cailp_multi",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.5927180790046135,
+    "std": 0.038303415866165064,
+    "ci95_low": 0.5689773758894777,
+    "ci95_high": 0.6164587821197492,
+    "n": 10.0
+  },
+  {
+    "dataset": "lastfm",
+    "method": "dspar",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.45828558806120673,
+    "std": 0.014186974756887984,
+    "ci95_low": 0.4494924100067471,
+    "ci95_high": 0.46707876611566634,
+    "n": 10.0
+  },
+  {
+    "dataset": "lastfm",
+    "method": "effective_resistance",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.45828558806120673,
+    "std": 0.014186974756887984,
+    "ci95_low": 0.4494924100067471,
+    "ci95_high": 0.46707876611566634,
+    "n": 10.0
+  },
+  {
+    "dataset": "lastfm",
+    "method": "neuralsparse",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.48901818700084065,
+    "std": 0.009753619903771993,
+    "ci95_low": 0.4829728307526562,
+    "ci95_high": 0.49506354324902513,
+    "n": 10.0
+  },
+  {
+    "dataset": "lastfm",
+    "method": "original_ilp",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.5897923251652388,
+    "std": 0.01651796316152656,
+    "ci95_low": 0.5795543855293916,
+    "ci95_high": 0.600030264801086,
+    "n": 10.0
+  },
+  {
+    "dataset": "lastfm",
+    "method": "ptdnet",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.6159224463934626,
+    "std": 0.011469619487765658,
+    "ci95_low": 0.6088135025840111,
+    "ci95_high": 0.6230313902029141,
+    "n": 10.0
+  },
+  {
+    "dataset": "lastfm",
+    "method": "random",
+    "metric": "sparsity_f1_auc",
+    "mean": 0.5799219983917276,
+    "std": 0.01776534553710537,
+    "ci95_low": 0.5689109231495643,
+    "ci95_high": 0.590933073633891,
+    "n": 10.0
+  }
+]
