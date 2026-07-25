@@ -1,11 +1,9 @@
 # Stage A freeze manifest — GitHub Developers completed
 
 **Status:** FROZEN / IMMUTABLE  
-**Suggested Git tag:** `stage-a-github-frozen`  
-**Timestamp (UTC):** 20260725T124409Z  
-**Git commit hash:** UNAVAILABLE (workspace is not a git repository at freeze time)  
-**Archive directory:** `results/frozen/stage_a_github_20260725T124409Z/`  
-**Machine-readable inventory:** `results/frozen/stage_a_github_20260725T124409Z/MANIFEST.json` (154 files)
+**Git commit hash:** `f2c6bc9` (initial public release on `main`)  
+**Suggested Git tag:** `stage-a-github-frozen` (created locally; push with `git push origin stage-a-github-frozen`)  
+**Public repository:** https://github.com/MehrdadJalali-AI/cilp-social-sparsification
 
 ---
 
