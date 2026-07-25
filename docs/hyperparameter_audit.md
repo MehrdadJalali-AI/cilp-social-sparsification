@@ -2,7 +2,7 @@
 
 Source of truth for the reported multi-seed comparison: `scripts/run_full_grid.py` (`GRID_CFG` + `score_cailp`).
 
-Complete machine-readable table: `paper/tables/hyperparameters_complete.csv`.
+Hyperparameters are recorded in `scripts/run_full_grid.py` (`GRID_CFG`) and related configs under `configs/`.
 
 ## Highlights
 

@@ -57,7 +57,7 @@ def main() -> None:
     md.append(f"Found {len(rq11)} CAILP teacher-comparison rows.")
     (out_dir / "README.md").write_text("\n".join(md), encoding="utf-8")
 
-    # Also write paper/tables stub
+    # Also write results/tables stub
     paper_tab = ensure_dir(ROOT / "paper" / "tables")
     (paper_tab / "table3_node_classification.csv").write_text(table_path.read_text(), encoding="utf-8")
 

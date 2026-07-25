@@ -49,14 +49,13 @@ Exact SHA-256 digests for all 154 archived files are recorded in `MANIFEST.json`
 
 1. **Authoritative result store** — CSV + JSON (1,890 rows) and pre-GitHub backup  
 2. **GitHub raw per-seed outputs** — `results/raw/grid/github_seed{0-9}_*.json` (80 files)  
-3. **Diagnostic Stage A outputs** — `results/raw/grid/diagnostic_stageA/`  
-4. **Regenerated tables** — `paper/tables/*`  
-5. **Regenerated figures** — `paper/figures/fig{2,3,4,5,7}_*`  
-6. **Validator / statistical outputs** — decision JSON, paired structural CSV, audits  
-7. **GitHub audit reports** — `docs/github_*.md`  
-8. **Exact configuration sources** — `scripts/run_full_grid.py`, `src/counterfactual/exact_teacher.py`  
-9. **GitHub splits** — `data/splits/github_seed{0-9}.pt`  
-10. **Processed GitHub graph** — `data/processed/github.pt`
+3. **Diagnostic Stage A outputs** — `results/raw/grid/diagnostic_stageA/` (local archive)  
+4. **Aggregated tables** — `results/tables/*`, `results/processed/*`  
+5. **Validator / statistical outputs** — decision JSON, paired tests, audits  
+6. **GitHub audit reports** — `docs/github_*.md`  
+7. **Exact configuration sources** — `scripts/run_full_grid.py`, `src/counterfactual/exact_teacher.py`  
+8. **GitHub splits** — `data/splits/github_seed{0-9}.pt`  
+9. **Processed GitHub graph** — `data/processed/github.pt` (local; checksum in `CHECKSUMS.sha256`)  
 
 ---
 
