@@ -24,8 +24,8 @@ Multi-criteria supervision is supported across datasets when ≥2 metrics are su
 
 Artifacts:
 
-- `paper/tables/paired_structural_tests.csv`
-- `paper/tables/s21_paired_multidim.tex`
+- `results/processed/paired_tests.json`
+- `results/processed/multi_dim_decision.json`
 - `results/processed/multi_dim_decision.json`
 
 ## Predictive AUC (unchanged numerically)

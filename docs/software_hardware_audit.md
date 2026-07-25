@@ -15,7 +15,7 @@
 
 ## Analysis workstation (table/figure regeneration)
 
-Recorded when regenerating manuscript artifacts (not claimed as the unique historical grid host):
+Recorded during local analysis regeneration (not claimed as the unique historical grid host):
 
 - macOS arm64; Python 3.9.6
 - PyTorch 2.4.0; PyTorch Geometric 2.6.1; NetworkX 3.2.1; NumPy 1.26.4; SciPy 1.13.1; scikit-learn 1.6.1; matplotlib 3.9.4

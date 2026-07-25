@@ -52,4 +52,4 @@ Eigenspectrum branch unused in LastFM/Facebook.
 `y_cf = normalize( Σ_k β_k · normalize(Δ_k) )`  
 Task-only: `y = normalize(Δ_task)`.
 
-See also `paper/tables/teacher_component_definitions.csv`.
+See also `src/counterfactual/exact_teacher.py` for the implemented criteria.

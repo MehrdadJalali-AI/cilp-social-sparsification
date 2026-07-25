@@ -1,25 +1,25 @@
 # CILP — Counterfactual Inverse Link Prediction for Social-Network Sparsification
 
-Public code and Stage A results for:
-
-> *Learning which edges to remove under a budget: Counterfactual inverse link prediction for utility-preserving social-network sparsification*
+Public **code and Stage A experimental results** for utility-preserving social-network sparsification via Counterfactual Inverse Link Prediction (CILP).
 
 **Method name:** CILP (multi-criteria counterfactual teacher)  
 **Matched ablation:** Task-only  
 **Parent method:** ILP-GCN (Bangian Tabrizi, Jalali & Houshmand, *Journal of Big Data*, 2025)
+
+This repository does **not** include the journal manuscript sources.
 
 ## Repository contents
 
 | Path | Description |
 |---|---|
 | `src/` | CILP teacher, scorer, pruning, baselines |
-| `scripts/` | Data prep, full grid, table/figure regeneration, validators |
+| `scripts/` | Data prep, full grid, evaluation, CSV table export |
 | `configs/` | Experiment configs |
 | `data/splits/` | Fixed train/development/test masks (seeds 0–9) |
 | `results/processed/` | Authoritative Stage A store (1,890 rows) |
 | `results/raw/grid/` | Per-seed raw JSON outputs |
-| `paper/` | Manuscript + Supplementary Information sources and figures |
-| `docs/` | Freeze manifest, provenance, audits |
+| `results/tables/` | Aggregated CSV tables |
+| `docs/` | Freeze manifest and technical audits |
 | `CHECKSUMS.sha256` | SHA-256 digests for splits, authoritative results, and local `.pt` graphs |
 
 Large processed graphs (`data/processed/*.pt`) are **not** stored in Git (GitHub size limits). Rebuild them from public SNAP/MUSAE releases and verify against `CHECKSUMS.sha256`.
@@ -35,11 +35,11 @@ python scripts/build_splits.py --datasets facebook lastfm github --seeds 0 1 2 3
 pytest -q
 ```
 
-Regenerate manuscript tables/figures from the authoritative store:
+Export summary tables from the authoritative store:
 
 ```bash
-python scripts/generate_paper_tables.py
-python scripts/generate_paper_figures.py
+python scripts/make_tables.py
+python scripts/make_grid_tables.py
 ```
 
 ## Stage A freeze

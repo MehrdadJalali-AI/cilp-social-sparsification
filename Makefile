@@ -1,4 +1,4 @@
-.PHONY: download audit splits test pilot baselines ablation evaluate tables figures paper
+.PHONY: download audit splits test pilot baselines ablation evaluate tables
 
 download:
 	python scripts/download_data.py --all
@@ -24,7 +24,7 @@ ablation:
 evaluate:
 	python scripts/evaluate_all.py
 	python scripts/make_tables.py
-	python scripts/make_figures.py
 
-paper:
-	python scripts/build_paper.py
+tables:
+	python scripts/make_tables.py
+	python scripts/make_grid_tables.py

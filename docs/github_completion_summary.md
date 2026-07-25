@@ -11,7 +11,7 @@
 | Protocol changes | **none** |
 | LastFM/Facebook altered | **no** (SHA identical) |
 | GitHub decision-rule outcome | **Supported** (4/4 metrics) |
-| Manuscript edited | **no** (Stage A restriction) |
+| Manuscript edited | n/a (this public repo excludes manuscript sources) |
 | Stage B started | **no** |
 
 ## Runtime
@@ -52,27 +52,15 @@
 
 **Decision:** Supported (≥2 metrics with positive Δ and Holm p<0.05).
 
-## Regenerated artifacts (no manuscript text edits)
+## Regenerated artifacts
 
-### Tables
+### Results tables / decisions
 
-- `paper/tables/paired_structural_tests.csv` (includes GitHub)
-- `paper/tables/table4_structure.csv` / `.tex`
-- `paper/tables/s14_full.tex`
-- `paper/tables/s16_18_paired.tex`
-- `paper/tables/s19_summary.tex`
-- `paper/tables/s22_structure.tex`
-- `paper/tables/s23_table.tex`
-- `paper/tables/descriptive_macro_f1.csv`
 - `results/processed/multi_dim_decision.json`
-
-### Figures
-
-- `paper/figures/fig2_sparsity_curves.pdf`
-- `paper/figures/fig3_method_comparison.pdf`
-- `paper/figures/fig4_teacher_compare.pdf`
-- `paper/figures/fig5_structure.pdf`
-- `paper/figures/fig7_runtime.pdf`
+- `results/processed/paired_tests.json`
+- `results/tables/table3_multiseed_macro_f1.csv`
+- `results/tables/table14_paired_tests.csv`
+- `results/tables/table_surrogate_quality.csv`
 
 ### Audits
 
@@ -81,7 +69,6 @@
 - `docs/github_runtime_estimate.md`
 - `docs/github_execution_log.md`
 - `docs/github_result_merge_audit.md`
-- `docs/github_figure_provenance.md`
 - `docs/github_completion_summary.md` (this file)
 
 ## Identical-protocol assumptions
