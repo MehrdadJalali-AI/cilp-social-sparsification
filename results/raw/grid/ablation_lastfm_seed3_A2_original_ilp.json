@@ -1,0 +1,83 @@
+[
+  {
+    "dataset": "lastfm",
+    "method": "A2_original_ilp",
+    "seed": 3,
+    "removal_rate": 0.3,
+    "retained_edge_ratio": 0.6999928073077754,
+    "test_macro_f1": 0.7389539200226066,
+    "test_accuracy": 0.8693368351936966,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.7324544272277512,
+    "giant_component_ratio": 0.9741605456453305,
+    "num_components": 172.0,
+    "bridge_preservation": 0.966822187662001,
+    "degree_ks": 0.07463273871983211,
+    "clustering": 0.14945342569372622,
+    "minority_degree_retention": 0.9999999927272728,
+    "minority_isolation_rate": 0.0,
+    "prune_seconds": 0.017764499999429972,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 3.479434875000152,
+    "ablation": "A2_original_ilp"
+  },
+  {
+    "dataset": "lastfm",
+    "method": "A2_original_ilp",
+    "seed": 3,
+    "removal_rate": 0.5,
+    "retained_edge_ratio": 0.5,
+    "test_macro_f1": 0.719195066965491,
+    "test_accuracy": 0.8542350623768877,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.732472747325007,
+    "giant_component_ratio": 0.8393231899265478,
+    "num_components": 1089.0,
+    "bridge_preservation": 0.87817522032141,
+    "degree_ks": 0.19373032528856243,
+    "clustering": 0.11456783530022484,
+    "minority_degree_retention": 0.9090909024793389,
+    "minority_isolation_rate": 0.0625,
+    "prune_seconds": 0.01330929199957609,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 3.479434875000152,
+    "ablation": "A2_original_ilp"
+  },
+  {
+    "dataset": "lastfm",
+    "method": "A2_original_ilp",
+    "seed": 3,
+    "removal_rate": 0.7,
+    "retained_edge_ratio": 0.3000071926922247,
+    "test_macro_f1": 0.6935813592084674,
+    "test_accuracy": 0.8082731451083388,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.707454283201592,
+    "giant_component_ratio": 0.5704354669464848,
+    "num_components": 3045.0,
+    "bridge_preservation": 0.6537065837221359,
+    "degree_ks": 0.39428121720881426,
+    "clustering": 0.07420890235476758,
+    "minority_degree_retention": 0.7272727219834711,
+    "minority_isolation_rate": 0.3125,
+    "prune_seconds": 0.00726200000008248,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 3.479434875000152,
+    "ablation": "A2_original_ilp"
+  }
+]

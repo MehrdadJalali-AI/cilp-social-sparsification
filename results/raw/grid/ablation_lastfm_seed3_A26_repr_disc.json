@@ -1,0 +1,7 @@
+[
+  {
+    "method": "A26_repr_disc",
+    "status": "skipped",
+    "reason": "adversarial_rejected_in_pilot"
+  }
+]

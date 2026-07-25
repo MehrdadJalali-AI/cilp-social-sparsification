@@ -1,0 +1,15 @@
+dataset,method,n,m30,m50,m70,auc
+lastfm,cailp_multi,10,0.786\pm0.040,0.769\pm0.061,0.715\pm0.071,0.593\pm0.038
+lastfm,cailp_a31,10,0.758\pm0.062,0.730\pm0.083,0.673\pm0.081,0.566\pm0.050
+lastfm,original_ilp,10,0.801\pm0.019,0.776\pm0.023,0.702\pm0.032,0.590\pm0.017
+lastfm,ptdnet,10,0.795\pm0.025,0.788\pm0.013,0.760\pm0.018,0.616\pm0.011
+lastfm,neuralsparse,10,0.665\pm0.022,0.602\pm0.013,0.551\pm0.021,0.489\pm0.010
+lastfm,random,10,0.773\pm0.016,0.745\pm0.036,0.696\pm0.036,0.580\pm0.018
+lastfm,resistance_proxy,10,0.613\pm0.030,0.558\pm0.026,0.524\pm0.019,0.458\pm0.014
+facebook,cailp_multi,4,0.929\pm0.013,0.924\pm0.014,0.911\pm0.016,0.736\pm0.012
+facebook,cailp_a31,6,0.911\pm0.020,0.907\pm0.020,0.903\pm0.015,0.725\pm0.013
+facebook,original_ilp,6,0.938\pm0.004,0.932\pm0.003,0.920\pm0.007,0.742\pm0.003
+facebook,ptdnet,6,0.932\pm0.005,0.924\pm0.005,0.912\pm0.006,0.738\pm0.003
+facebook,neuralsparse,6,0.916\pm0.003,0.897\pm0.003,0.888\pm0.006,0.721\pm0.002
+facebook,random,6,0.927\pm0.005,0.917\pm0.006,0.902\pm0.008,0.732\pm0.005
+facebook,resistance_proxy,6,0.888\pm0.007,0.886\pm0.007,0.889\pm0.008,0.711\pm0.005

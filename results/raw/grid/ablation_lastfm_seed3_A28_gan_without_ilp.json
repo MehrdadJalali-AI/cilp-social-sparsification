@@ -1,0 +1,7 @@
+[
+  {
+    "method": "A28_gan_without_ilp",
+    "status": "skipped",
+    "reason": "adversarial_rejected_in_pilot"
+  }
+]

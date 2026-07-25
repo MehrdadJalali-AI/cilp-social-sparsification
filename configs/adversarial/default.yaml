@@ -1,0 +1,6 @@
+enabled: false
+variant: none  # none | representation | mask | both
+gumbel_temperature: 1.0
+adv_weight: 0.1
+discriminator_steps: 1
+wasserstein_gp: true

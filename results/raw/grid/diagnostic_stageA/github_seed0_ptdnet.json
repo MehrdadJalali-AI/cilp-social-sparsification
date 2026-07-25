@@ -1,0 +1,28 @@
+[
+  {
+    "dataset": "github",
+    "method": "ptdnet",
+    "seed": 0,
+    "removal_rate": 0.5,
+    "retained_edge_ratio": 0.49999826991415314,
+    "test_macro_f1": 0.8148232152572495,
+    "test_accuracy": 0.8647214854111406,
+    "test_worst_class_f1": 0.7186982901268616,
+    "val_macro_f1": 0.8127458838439107,
+    "giant_component_ratio": 0.923289124668435,
+    "num_components": 2775.0,
+    "bridge_preservation": 0.6844113718755963,
+    "degree_ks": 0.1288328912466843,
+    "clustering": 0.06037795009840311,
+    "minority_degree_retention": 0.7309906764057601,
+    "minority_isolation_rate": 0.05934900913851525,
+    "prune_seconds": 0.04052325000000678,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 4.775491250000002
+  }
+]

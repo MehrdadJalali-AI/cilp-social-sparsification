@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.venv/
+venv/
+
+# OS / editors
+.DS_Store
+.ipynb_checkpoints/
+
+# Large local graphs (rebuild from public SNAP/MUSAE; see CHECKSUMS.sha256)
+data/raw/
+data/processed/*.pt
+!data/processed/.gitkeep
+
+# Bulky experiment archives (authoritative processed results are tracked)
+results/frozen/
+results/logs/
+results/figures/
+
+# Do not ignore split masks
+!data/splits/
+!data/splits/**/*.pt
+
+# Other accidental checkpoints
+*.pt
+!data/splits/**/*.pt
+
+# LaTeX build artefacts
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.bbl
+paper/*.blg

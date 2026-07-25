@@ -1,0 +1,44 @@
+{
+  "dataset": "github",
+  "citation": "Rozemberczki et al., GitHub Social (SNAP musae-github)",
+  "num_nodes": 37700,
+  "directed_edge_entries": 578006,
+  "unique_undirected_edges": 289003,
+  "self_loops": 0,
+  "duplicate_edges_approx": 0,
+  "feature_dimension": 4005,
+  "num_classes": 2,
+  "class_distribution": {
+    "0": 27961,
+    "1": 9739
+  },
+  "density": 0.0004066878203117068,
+  "average_degree": 15.331724137931035,
+  "num_connected_components": 1,
+  "giant_component_ratio": 1.0,
+  "homophily": 0.8453441858291626,
+  "feature_sparsity": 0.9954277873039246,
+  "assortativity": -0.07521713413904481,
+  "clustering_coefficient": 0.16753704480107237,
+  "library_versions": {
+    "torch": "2.4.0",
+    "torch_geometric": "2.6.1",
+    "networkx": "3.2.1",
+    "numpy": "1.26.4"
+  },
+  "dataset_download_date": "2026-07-24",
+  "raw_file_checksums": {
+    "extracted/git_web_ml/README.txt": "355e50a83b91eb7f34dc92dce991570f3e48c31df088eff7dd63dea32f764e6c",
+    "extracted/git_web_ml/citing.txt": "36016c1d9f1251594636dba9683198e9d0b0e70d11cbe47f991cc567dfbd0e70",
+    "extracted/git_web_ml/musae_git_edges.csv": "34c57382246949d1b3b7fa641a8532672001ecae8e9558f0b3c113cc035bd781",
+    "extracted/git_web_ml/musae_git_features.json": "47761f93f839d84b213e9f2fa43c056761734b295d6b2e838d8bbc335073cee7",
+    "extracted/git_web_ml/musae_git_target.csv": "3a8582f0c55d6f605df5f45bde28a90561be9517b40226c5e6bbce253679906a"
+  },
+  "preprocessing": {
+    "undirected": true,
+    "remove_self_loops": true,
+    "coalesce_duplicates": true,
+    "feature_normalization": "none_at_audit",
+    "source": "SNAP/MUSAE mirrors (PyG graphmining.ai unavailable)"
+  }
+}

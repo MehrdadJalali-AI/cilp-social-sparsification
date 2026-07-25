@@ -1,0 +1,48 @@
+[
+  {
+    "dataset": "github",
+    "method": "cailp_a31",
+    "seed": 0,
+    "removal_rate": 0.5,
+    "retained_edge_ratio": 0.49999826991415314,
+    "test_macro_f1": 0.8017203769405286,
+    "test_accuracy": 0.8582228116710875,
+    "test_worst_class_f1": 0.6958748221906117,
+    "val_macro_f1": 0.8080466860539122,
+    "giant_component_ratio": 0.3044031830238727,
+    "num_components": 26225.0,
+    "bridge_preservation": 0.0,
+    "degree_ks": 0.6955968169761273,
+    "clustering": 0.08976553749370673,
+    "minority_degree_retention": 0.3118457334708573,
+    "minority_isolation_rate": 0.8129171372830886,
+    "prune_seconds": 0.09154150000006211,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 518.045246,
+    "surrogate": {
+      "mae": 0.22342601412317992,
+      "spearman": -0.07497528734308252,
+      "kendall": -0.07438909280194198,
+      "top_k_precision": 1.0,
+      "top_k_recall": 1.0,
+      "calibration_ece": 0.21668365459720604,
+      "teacher_n": 40,
+      "teacher": "single_objective",
+      "effects_means": {
+        "task": -1.2516975402832032e-07,
+        "comm": 1.3044169524191789,
+        "conn": 0.2000026525198939,
+        "spec": 0.2199265292135711,
+        "repr": 4.196291824598574e-06,
+        "group": 0.0
+      }
+    },
+    "fusion": "concat",
+    "teacher": "single_objective"
+  }
+]

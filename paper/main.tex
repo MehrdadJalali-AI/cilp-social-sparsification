@@ -1,0 +1,121 @@
+%% CILP manuscript — Journal of Big Data Methodology draft
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{times}
+\usepackage{mathtools,amssymb,bm}
+\usepackage{booktabs,multirow,longtable,tabularx,array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{placeins}
+\usepackage{lineno}
+
+\doublespacing
+\linenumbers
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{0em}
+\setlength{\parindent}{1.1em}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.55em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.45em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{CILP --- Journal of Big Data Methodology draft}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\newcommand{\cilp}{CILP}
+\newcommand{\ilp}{ILP-GCN}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Learning which edges to remove under a budget:\\
+Counterfactual inverse link prediction for utility-preserving\\
+social-network sparsification\par}
+\vspace{1.0em}
+% Authors and affiliations: finalize before submission.
+% Corresponding author: finalize before submission.
+{\large\textit{Journal of Big Data --- Methodology article draft}\par}
+\vspace{0.8em}
+\end{center}
+
+\begin{abstract}
+Edge-rich attributed social networks inflate storage and message-passing cost in graph neural networks, motivating utility-preserving sparsification under an exact edge-removal budget.
+We present Counterfactual Inverse Link Prediction (CILP), which extends inverse link prediction from cheminformatics similarity graphs to attributed social networks through composite counterfactual supervision.
+CILP trains an edge scorer with a multi-criteria teacher that combines deletion-induced effects (task loss, connectivity, representation shift, and group impact) with structural proxies (community-boundary and degree-based spectral terms), and removes low-importance edges by unconstrained ranking under a matched budget.
+On LastFM Asia, Facebook Page-Page, and GitHub Developers (ten paired seeds; removal rates $0.1$--$0.9$), CILP improves sparsity--Macro-F1 AUC over an architecturally matched task-only teacher by $+0.0265$, $+0.0142$, and $+0.0033$, respectively, and improves all four paired evaluation metrics over Task-only on each dataset after within-dataset Holm correction.
+CILP remains competitive with ILP-GCN and PTDNet, but does not universally lead predictive AUC.
+CILP training, which includes teacher construction and scorer fitting, is substantially more expensive than the lighter baselines.
+The supported contribution is multi-criteria counterfactual supervision under matched budgets, not universal predictive or structural superiority.
+\end{abstract}
+
+\noindent\textbf{Keywords:}
+Inverse link prediction; graph sparsification; social networks; graph neural networks; counterfactual learning; edge importance; multi-criteria learning
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/methods}
+\input{sections/experimental_setup}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\section*{List of abbreviations}
+\begin{description}[style=nextline,leftmargin=3.2cm,font=\normalfont]
+\item[AUC] Area under the sparsity--Macro-F1 curve
+\item[CILP] Counterfactual Inverse Link Prediction
+\item[GCN] Graph convolutional network
+\item[GNN] Graph neural network
+\item[ILP-GCN] Inverse link prediction with graph convolutional networks
+\item[NLL] Negative log-likelihood
+\end{description}
+
+\section*{Declarations}
+
+\subsection*{Ethics approval and consent to participate}
+Not applicable.
+
+\subsection*{Consent for publication}
+Not applicable.
+
+\subsection*{Availability of data and materials}
+Attributed graphs are reconstructed from public SNAP and MUSAE releases~\citep{rozemberczki2021multi} for LastFM Asia, Facebook Page-Page, and GitHub Developers.
+Processed graphs, fixed train/development/test splits for seeds $0$--$9$, the authoritative result store ($1{,}890$ rows), per-seed raw outputs, regenerated tables and figures, the Stage~A freeze manifest, the consistency validator, and exact configuration sources accompany the code release.
+No DOI is claimed in this draft.
+
+\subsection*{Competing interests}
+The authors declare that they have no competing interests.
+
+\subsection*{Funding}
+% Finalize funding statement before submission.
+Not applicable / to be completed.
+
+\subsection*{Authors' contributions}
+% Finalize after authorship is confirmed.
+All authors contributed to the conception and design of the study; details to be finalized before submission.
+
+\subsection*{Acknowledgements}
+Not applicable / to be completed.
+
+\subsection*{Authors' information}
+Optional; to be completed if desired.
+
+\section*{Supplementary information}
+Supplementary Information accompanies this article, including teacher definitions, full per-budget tables, paired tests, ablations, hyperparameter and software audits, and runtime logs.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

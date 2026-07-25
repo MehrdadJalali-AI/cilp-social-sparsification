@@ -1,0 +1,113 @@
+[
+  {
+    "dataset": "lastfm",
+    "method": "A23_degree_prior",
+    "seed": 2,
+    "removal_rate": 0.3,
+    "retained_edge_ratio": 0.6999928073077754,
+    "test_macro_f1": 0.7531010276927357,
+    "test_accuracy": 0.8680236375574524,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.7170468443264473,
+    "giant_component_ratio": 0.9134312696747114,
+    "num_components": 627.0,
+    "bridge_preservation": 0.7926386728875064,
+    "degree_ks": 0.10663693599160545,
+    "clustering": 0.13850543619779,
+    "minority_degree_retention": 0.863636357355372,
+    "minority_isolation_rate": 0.125,
+    "prune_seconds": 0.26682691700079886,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 189.27696841599936,
+    "surrogate": {
+      "mae": 0.05652515939345137,
+      "spearman": 0.7956302521008403,
+      "kendall": 0.6522448979591837,
+      "top_k_precision": 1.0,
+      "top_k_recall": 1.0
+    },
+    "ablation": "A23_degree_prior",
+    "fusion": "concat",
+    "teacher": "multi_objective",
+    "mass": "degree"
+  },
+  {
+    "dataset": "lastfm",
+    "method": "A23_degree_prior",
+    "seed": 2,
+    "removal_rate": 0.5,
+    "retained_edge_ratio": 0.5,
+    "test_macro_f1": 0.752763776611117,
+    "test_accuracy": 0.8647406434668418,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.6803469322998391,
+    "giant_component_ratio": 0.7997114375655824,
+    "num_components": 1440.0,
+    "bridge_preservation": 0.68066355624676,
+    "degree_ks": 0.21458551941238196,
+    "clustering": 0.10277284453001775,
+    "minority_degree_retention": 0.6818181768595042,
+    "minority_isolation_rate": 0.25,
+    "prune_seconds": 0.20500716700007615,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 189.27696841599936,
+    "surrogate": {
+      "mae": 0.05652515939345137,
+      "spearman": 0.7956302521008403,
+      "kendall": 0.6522448979591837,
+      "top_k_precision": 1.0,
+      "top_k_recall": 1.0
+    },
+    "ablation": "A23_degree_prior",
+    "fusion": "concat",
+    "teacher": "multi_objective",
+    "mass": "degree"
+  },
+  {
+    "dataset": "lastfm",
+    "method": "A23_degree_prior",
+    "seed": 2,
+    "removal_rate": 0.7,
+    "retained_edge_ratio": 0.3000071926922247,
+    "test_macro_f1": 0.6509476824548739,
+    "test_accuracy": 0.8049901510177282,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.6280454913001834,
+    "giant_component_ratio": 0.5325288562434418,
+    "num_components": 3363.0,
+    "bridge_preservation": 0.49144634525660963,
+    "degree_ks": 0.42917103882476393,
+    "clustering": 0.07093762351284026,
+    "minority_degree_retention": 0.45454545123966944,
+    "minority_isolation_rate": 0.4375,
+    "prune_seconds": 0.3668817500001751,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 189.27696841599936,
+    "surrogate": {
+      "mae": 0.05652515939345137,
+      "spearman": 0.7956302521008403,
+      "kendall": 0.6522448979591837,
+      "top_k_precision": 1.0,
+      "top_k_recall": 1.0
+    },
+    "ablation": "A23_degree_prior",
+    "fusion": "concat",
+    "teacher": "multi_objective",
+    "mass": "degree"
+  }
+]

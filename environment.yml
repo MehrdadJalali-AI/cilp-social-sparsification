@@ -1,0 +1,21 @@
+name: cailp-social
+channels:
+  - pytorch
+  - pyg
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - scipy
+  - scikit-learn
+  - networkx
+  - pyyaml
+  - pandas
+  - matplotlib
+  - statsmodels
+  - pytest
+  - pip:
+      - torch
+      - torch-geometric
+      - python-louvain

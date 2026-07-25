@@ -1,0 +1,97 @@
+{
+  "note": "Variants ranked by validation Macro-F1 at 50% removal; test reported for all.",
+  "ranked_by_val_at_50": [
+    {
+      "method": "cailp_multi_teacher120",
+      "val_macro_f1": 0.9356064536869321,
+      "test_macro_f1": 0.9383911755500285,
+      "surrogate": {
+        "mae": 0.10394194550945385,
+        "spearman": 0.4773295571824709,
+        "kendall": 0.3889477533248643,
+        "top_k_precision": 0.62,
+        "top_k_recall": 0.62,
+        "calibration_ece": 0.11010087804475692,
+        "teacher_n": 120,
+        "teacher": "multi_objective",
+        "effects_means": {
+          "task": -7.004787524541219e-07,
+          "comm": 1.1926089675668188,
+          "conn": 0.016667037531523512,
+          "spec": 0.12134347193822273,
+          "repr": 2.6584237069945023e-05,
+          "group": 0.0
+        }
+      }
+    },
+    {
+      "method": "cailp_multi_teacher80",
+      "val_macro_f1": 0.9335704412203822,
+      "test_macro_f1": 0.9385206346628231,
+      "surrogate": {
+        "mae": 0.08043240612876021,
+        "spearman": 0.5852366305132215,
+        "kendall": 0.4664258338690617,
+        "top_k_precision": 0.84,
+        "top_k_recall": 0.84,
+        "calibration_ece": 0.09561248469332335,
+        "teacher_n": 80,
+        "teacher": "multi_objective",
+        "effects_means": {
+          "task": 5.194917321205139e-07,
+          "comm": 1.1568846481445707,
+          "conn": 0.02500055629728527,
+          "spec": 0.1343556997383068,
+          "repr": 2.953805345384808e-05,
+          "group": 0.0
+        }
+      }
+    },
+    {
+      "method": "cailp_multi_teacher40",
+      "val_macro_f1": 0.9106512597422045,
+      "test_macro_f1": 0.9064621418694463,
+      "surrogate": {
+        "mae": 0.13203050088745663,
+        "spearman": 0.6538970018722678,
+        "kendall": 0.5419467627971346,
+        "top_k_precision": 1.0,
+        "top_k_recall": 1.0,
+        "calibration_ece": 0.15263455590536418,
+        "teacher_n": 40,
+        "teacher": "multi_objective",
+        "effects_means": {
+          "task": 5.733221769332886e-07,
+          "comm": 1.1283237620226785,
+          "conn": 0.0,
+          "spec": 0.12431691099968993,
+          "repr": 2.289588753114913e-05,
+          "group": 0.0
+        }
+      }
+    },
+    {
+      "method": "cailp_multi_teacher20",
+      "val_macro_f1": 0.9051986752248282,
+      "test_macro_f1": 0.900106253937523,
+      "surrogate": {
+        "mae": 0.06993530355639838,
+        "spearman": 0.691265844174404,
+        "kendall": 0.6100988924743,
+        "top_k_precision": 1.0,
+        "top_k_recall": 1.0,
+        "calibration_ece": 0.07097028357872251,
+        "teacher_n": 20,
+        "teacher": "multi_objective",
+        "effects_means": {
+          "task": 2.054870128631592e-06,
+          "comm": 1.1246227088858058,
+          "conn": 0.0,
+          "spec": 0.13650300611100924,
+          "repr": 2.9318955739654484e-05,
+          "group": 0.0
+        }
+      }
+    }
+  ]
+}

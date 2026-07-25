@@ -1,0 +1,24 @@
+{
+  "family": "per-dataset 4-metric Holm on Wilcoxon p (CILP \u2212 Task-only)",
+  "datasets": {
+    "lastfm": {
+      "dims_supported": 4,
+      "n_metrics": 4,
+      "supported_on_dataset": true
+    },
+    "facebook": {
+      "dims_supported": 4,
+      "n_metrics": 4,
+      "supported_on_dataset": true
+    },
+    "github": {
+      "dims_supported": 4,
+      "n_metrics": 4,
+      "supported_on_dataset": true
+    }
+  },
+  "multi_dimensional_support": true,
+  "rule": "Per dataset: multi-criteria supported if \u22652 of 4 metrics have positive \u0394 and Holm Wilcoxon p<0.05. Across datasets: headline support if \u22652 datasets meet that criterion.",
+  "github_decision": "Supported",
+  "conclusion": "Across-dataset support=True; GitHub=Supported; details per dataset in datasets map."
+}

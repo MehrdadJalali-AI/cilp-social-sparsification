@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "CAILP-Social: Counterfactual Attention-Based Inverse Link Prediction for Social Network Sparsification"
+message: If you use this software, please cite the working paper and the original ILP-GCN paper.
+type: software
+authors:
+  - family-names: Jalali
+    given-names: Mehrdad
+preferred-citation:
+  type: article
+  title: "Inverse link prediction with graph convolutional networks for knowledge-preserving sparsification in cheminformatics"
+  authors:
+    - family-names: Bangian Tabrizi
+      given-names: Elnaz
+    - family-names: Jalali
+      given-names: Mehrdad
+    - family-names: Houshmand
+      given-names: Mahboobeh
+  year: 2025
+  journal: Journal of Big Data
+  volume: "12"
+  number: "176"
+  doi: 10.1186/s40537-025-01220-8

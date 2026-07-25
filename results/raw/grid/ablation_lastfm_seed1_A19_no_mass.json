@@ -1,0 +1,113 @@
+[
+  {
+    "dataset": "lastfm",
+    "method": "A19_no_mass",
+    "seed": 1,
+    "removal_rate": 0.3,
+    "retained_edge_ratio": 0.6999928073077754,
+    "test_macro_f1": 0.7636555213508127,
+    "test_accuracy": 0.8627708470124754,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.7883197288899589,
+    "giant_component_ratio": 0.8147953830010494,
+    "num_components": 1322.0,
+    "bridge_preservation": 0.7413167444271643,
+    "degree_ks": 0.16749737670514167,
+    "clustering": 0.15510834200998622,
+    "minority_degree_retention": 0.7727272671074381,
+    "minority_isolation_rate": 0.1875,
+    "prune_seconds": 0.1968472919998021,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 204.6661784160001,
+    "surrogate": {
+      "mae": 0.07817530773016045,
+      "spearman": 0.7856422569027611,
+      "kendall": 0.6571428571428571,
+      "top_k_precision": 1.0,
+      "top_k_recall": 1.0
+    },
+    "ablation": "A19_no_mass",
+    "fusion": "concat",
+    "teacher": "multi_objective",
+    "mass": "none"
+  },
+  {
+    "dataset": "lastfm",
+    "method": "A19_no_mass",
+    "seed": 1,
+    "removal_rate": 0.5,
+    "retained_edge_ratio": 0.5,
+    "test_macro_f1": 0.7289333237925928,
+    "test_accuracy": 0.8548916611950098,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.7701719414619621,
+    "giant_component_ratio": 0.7639034627492131,
+    "num_components": 1637.0,
+    "bridge_preservation": 0.7086573354069466,
+    "degree_ks": 0.20435466946484784,
+    "clustering": 0.11540631981826405,
+    "minority_degree_retention": 0.7272727219834711,
+    "minority_isolation_rate": 0.25,
+    "prune_seconds": 0.08786312500023996,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 204.6661784160001,
+    "surrogate": {
+      "mae": 0.07817530773016045,
+      "spearman": 0.7856422569027611,
+      "kendall": 0.6571428571428571,
+      "top_k_precision": 1.0,
+      "top_k_recall": 1.0
+    },
+    "ablation": "A19_no_mass",
+    "fusion": "concat",
+    "teacher": "multi_objective",
+    "mass": "none"
+  },
+  {
+    "dataset": "lastfm",
+    "method": "A19_no_mass",
+    "seed": 1,
+    "removal_rate": 0.7,
+    "retained_edge_ratio": 0.3000071926922247,
+    "test_macro_f1": 0.644069595559421,
+    "test_accuracy": 0.8260013131976363,
+    "test_worst_class_f1": 0.0,
+    "val_macro_f1": 0.6298911003770447,
+    "giant_component_ratio": 0.6152938090241343,
+    "num_components": 2479.0,
+    "bridge_preservation": 0.640746500777605,
+    "degree_ks": 0.3120409233997901,
+    "clustering": 0.07816587349997196,
+    "minority_degree_retention": 0.7272727219834711,
+    "minority_isolation_rate": 0.25,
+    "prune_seconds": 0.3503597090002586,
+    "leakage": {
+      "phase": "final_eval",
+      "locked": false,
+      "test_label_accesses": 0,
+      "test_edge_accesses": 0
+    },
+    "train_seconds": 204.6661784160001,
+    "surrogate": {
+      "mae": 0.07817530773016045,
+      "spearman": 0.7856422569027611,
+      "kendall": 0.6571428571428571,
+      "top_k_precision": 1.0,
+      "top_k_recall": 1.0
+    },
+    "ablation": "A19_no_mass",
+    "fusion": "concat",
+    "teacher": "multi_objective",
+    "mass": "none"
+  }
+]

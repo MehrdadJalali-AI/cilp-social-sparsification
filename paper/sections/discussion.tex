@@ -1,0 +1,23 @@
+\section{Discussion}
+\label{sec:discussion}
+
+Across three attributed social networks, CILP improves over the architecturally matched task-only teacher under paired seeds and identical fusion, including sparsity--Macro-F1 AUC and the three structural metrics at $50\%$ removal after within-dataset Holm adjustment in family~(i).
+The fixed four-metric support criterion is satisfied on LastFM, Facebook, and GitHub.
+CILP remains competitive with ILP-GCN and PTDNet for predictive AUC, but it is not universally the predictive leader: PTDNet leads predictive AUC on LastFM, ILP-GCN leads slightly on Facebook, and on GitHub CILP significantly improves over Task-only but remains slightly below ILP-GCN and PTDNet.
+On GitHub, the CILP-versus-Task-only AUC improvement is small ($\Delta{=}{+}0.0033$) yet consistent across all ten seeds; structural improvements relative to Task-only are larger than that predictive gain.
+ILP-GCN and PTDNet remain strong structural comparators on several metrics, so the contribution is the teacher-based composite supervision framework under matched budgets, not universal predictive or structural leadership.
+
+From a big-data systems perspective, exact-budget pruning is motivated by reduced edge volume for downstream message passing.
+The present evidence shows that CILP training---teacher construction plus scorer fitting---is substantially more expensive than ILP-GCN or PTDNet; teacher and scorer times were not separately logged.
+Successful completion of the full GitHub grid ($37{,}700$ nodes; $289{,}003$ edges; ten seeds; budgets $0.1$--$0.9$; orchestration wall-clock $\approx6.19$\,h) strengthens feasibility at this scale under the reported protocol; it does not establish industrial-scale GPU efficiency, nor does it yet quantify how many downstream training runs are needed to amortize construction cost.
+Separate timers and a downstream break-even analysis are the natural next systems measurements.
+
+Reported pruning is unconstrained ranking by $\mu_e$.
+Constraint-aware pruning and $\mu{+}\kappa\sigma$ rules are implemented but unused in the multi-seed comparison.
+Community structure enters only as a community-boundary teacher proxy (inter-community edges receive an explicit additive harm term); no direct community-preservation evaluation metric is reported.
+For all reported datasets ($|V|{>}400$), the spectral criterion is a degree-based proxy $1/d_u+1/d_v$, not a recomputed Laplacian eigenspectrum difference.
+Criterion weights are fixed and untuned; leave-one-criterion-out and weight-sensitivity analyses remain open.
+The development partition is reused for teacher $\Delta_{\mathrm{task}}$ and Facebook teacher-size selection, so the protocol is not fully validation-isolated.
+Adversarial learning and an under-sized Facebook teacher ($n{=}40$) are retained as rejected pilots.
+Limitations therefore include CPU training cost of CILP, the degree-based spectral proxy, fixed $\beta$, development-set reuse, absence of direct community metrics, and a single Resistance proxy rather than independently reproduced classical sparsifiers.
+The supported contribution is composite counterfactual supervision under matched budgets relative to a controlled task-only ablation.
