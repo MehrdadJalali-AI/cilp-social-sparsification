@@ -1,9 +1,12 @@
 # Stage A freeze manifest — GitHub Developers completed
 
 **Status:** FROZEN / IMMUTABLE  
-**Git commit hash:** `f2c6bc9` (initial public release on `main`)  
-**Suggested Git tag:** `stage-a-github-frozen` (created locally; push with `git push origin stage-a-github-frozen`)  
-**Public repository:** https://github.com/MehrdadJalali-AI/cilp-social-sparsification
+**Timestamp (UTC):** 20260725T124409Z  
+**Public repository:** https://github.com/MehrdadJalali-AI/cilp-social-sparsification  
+**Git commit (initial public release):** `f2c6bc9` on `main`  
+**Suggested Git tag:** `stage-a-github-frozen` (created locally; push with the branch)  
+**Checksums file:** `CHECKSUMS.sha256`  
+**Local research archive (not in Git):** `results/frozen/stage_a_github_20260725T124409Z/`  
 
 ---
 
