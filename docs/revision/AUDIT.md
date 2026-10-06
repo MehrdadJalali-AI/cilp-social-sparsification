@@ -8,7 +8,7 @@ this machine; nothing is inferred from the manuscript text alone.
 | Item | Location | Notes |
 |---|---|---|
 | ORIGINAL grid entry point | `scripts/run_full_grid.py` (`GRID_CFG`, `score_cailp`, `eval_importance`) | CILP = `cailp_multi`, Task-only = `cailp_a31` |
-| Stage B baselines | `scripts/run_stage_b_baselines.py`, `src/sparsification/baselines/{gassip_adapted,mog_adapted,psgnn_reimpl}.py` | **not in the public repository** (public HEAD 664d45f); now committed locally (5356ddc) |
+| Stage B baselines | `scripts/run_stage_b_baselines.py`, `src/sparsification/baselines/{gassip_adapted,mog_adapted,psgnn_reimpl}.py` | **not in the public repository** (public HEAD 81d1db0); now committed locally (5356ddc) |
 | Teacher | `src/counterfactual/exact_teacher.py`, `sampling.py`, `surrogate.py` | |
 | Scorer | `src/models/cailp.py` + `edge_encoder.py`, `line_graph_encoder.py`, `importance_decoder.py` | |
 | Downstream | `src/tasks/node_classification.py::train_node_classifier` | 2-layer GCN, validation-selected epoch |
@@ -21,7 +21,7 @@ this machine; nothing is inferred from the manuscript text alone.
 
 ## 0.2 Environment
 
-* Code: public `664d45f` + local snapshot `5356ddc` (tag `r1-original-protocol`, local only); revision commits on top (see ledger).
+* Code: public `81d1db0` (renumbered from `664d45f` on 2026-10-06; contents unchanged) + local snapshot `5356ddc` (tag `r1-original-protocol`, local only); revision commits on top. The `commit` fields in `results/revised/ledger.jsonl` refer to the authors' local revision repository; the published code and results are release tag `r1-revision`.
 * Hardware: Apple M2 Pro, 10 logical cores, 32 GB RAM; macOS 26.6.2; CPU execution only.
 * Python 3.9.6; PyTorch 2.4.0; PyTorch Geometric 2.6.1; NetworkX 3.2.1; NumPy 1.26.4; SciPy 1.13.1;
   scikit-learn 1.6.1; python-louvain 0.16; added in R1: networkit 11.0.1, python-igraph 1.0.0, leidenalg 0.12.0.

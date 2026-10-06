@@ -3,7 +3,7 @@
 **Status:** FROZEN / IMMUTABLE  
 **Timestamp (UTC):** 20260725T124409Z  
 **Public repository:** https://github.com/MehrdadJalali-AI/cilp-social-sparsification  
-**Git commit (initial public release):** `f2c6bc9` on `main`  
+**Git commit (initial public release):** `1c1cf6a` on `main` (renumbered from `f2c6bc9` on 2026-10-06, when co-author trailers were removed from commit messages; contents unchanged)  
 **Suggested Git tag:** `stage-a-github-frozen` (created locally; push with the branch)  
 **Checksums file:** `CHECKSUMS.sha256`  
 **Local research archive (not in Git):** `results/frozen/stage_a_github_20260725T124409Z/`  
