@@ -1,0 +1,25 @@
+{
+  "protocol": "REVISED",
+  "rule": "PREREGISTRATION.md \u00a72",
+  "teacher_n": {
+    "lastfm": {
+      "cilp_full": 40,
+      "task_only": 80
+    },
+    "facebook": {
+      "cilp_full": 40,
+      "task_only": 20
+    },
+    "github": {
+      "cilp_full": 120,
+      "task_only": 20
+    },
+    "pubmed": {
+      "cilp_full": 20,
+      "task_only": 20
+    }
+  },
+  "selection_commit": "86556d0fff8f64df7a89700feb95749ac123e489-dirty",
+  "selection_table": "results/revised/tables/selection_n_sensitivity.csv",
+  "sha": "72a7c2708e209d01"
+}

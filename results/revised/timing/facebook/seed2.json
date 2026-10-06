@@ -1,0 +1,318 @@
+{
+ "dataset": "facebook",
+ "seed": 2,
+ "commit": "7f72e29b26636f3123d04a655e18e97660b7e66b",
+ "hardware": {
+  "cpu": "Apple M2 Pro",
+  "logical_cores": 10,
+  "ram_gb": 32.0,
+  "os": "Darwin 26.6.2",
+  "python": "3.9.6",
+  "torch": "2.4.0",
+  "torch_threads": 6,
+  "device": "cpu"
+ },
+ "threads": 6,
+ "timing_grade": true,
+ "lock_sha": "72a7c2708e209d01",
+ "cilp_full": {
+  "teacher_n": 40,
+  "timings": {
+   "teacher_pretrain": 2.7530954169999404,
+   "teacher_sampling": 1.4470421670000633,
+   "teacher_graph_context": 8.760524042000043,
+   "teacher_probes": 2.704389124999807,
+   "teacher_aggregate": 0.0003773330001877184,
+   "teacher_peak_rss_mb": 11156.375,
+   "teacher_probe_components": {
+    "probe_forward": 2.275558121998756,
+    "conn": 0.00011049999989154458,
+    "comm": 0.20741720499995608,
+    "spec": 0.00020408299951668596
+   },
+   "teacher_total": 15.665428084000041,
+   "cache_max_abs_diff_task_rev": 2.2351741790771484e-08,
+   "scorer_teacher_features": 0.5031102079999528,
+   "scorer_surrogate_fit": 0.028286500000149317,
+   "scorer_view_build": 3.64191958299989,
+   "scorer_fit": 14.301746000000094,
+   "scorer_fit_peak_rss_mb": 12288.765625,
+   "scorer_fit_delta_rss_mb": 231.265625,
+   "scorer_rank_inference": 0.28093712500003676,
+   "scorer_total": 18.475062291000086,
+   "one_time_total": 34.42142750000016,
+   "wall_clock": 75.47938733399997
+  },
+  "per_budget": [
+   {
+    "removal_rate": 0.1,
+    "sparsify_seconds": 0.10040666700001566,
+    "undirected_edges": 153741,
+    "messages_per_layer": 329952,
+    "downstream_train_seconds": 4.6064765420001095,
+    "downstream_peak_rss_mb": 11673.703125,
+    "downstream_delta_rss_mb": 11.890625,
+    "downstream_inference_seconds": 0.032885916000168436
+   },
+   {
+    "removal_rate": 0.2,
+    "sparsify_seconds": 0.08258329199998116,
+    "undirected_edges": 136658,
+    "messages_per_layer": 295786,
+    "downstream_train_seconds": 4.500940582999874,
+    "downstream_peak_rss_mb": 11574.28125,
+    "downstream_delta_rss_mb": 0.0625,
+    "downstream_inference_seconds": 0.030613042000140922
+   },
+   {
+    "removal_rate": 0.3,
+    "sparsify_seconds": 0.031000833000007333,
+    "undirected_edges": 119576,
+    "messages_per_layer": 261622,
+    "downstream_train_seconds": 4.200981541999909,
+    "downstream_peak_rss_mb": 11495.03125,
+    "downstream_delta_rss_mb": 0.046875,
+    "downstream_inference_seconds": 0.02890458399997442
+   },
+   {
+    "removal_rate": 0.4,
+    "sparsify_seconds": 0.025057625000044936,
+    "undirected_edges": 102494,
+    "messages_per_layer": 227458,
+    "downstream_train_seconds": 3.986250707999943,
+    "downstream_peak_rss_mb": 11455.625,
+    "downstream_delta_rss_mb": 0.015625,
+    "downstream_inference_seconds": 0.027775625000003856
+   },
+   {
+    "removal_rate": 0.5,
+    "sparsify_seconds": 0.024127709000140385,
+    "undirected_edges": 85411,
+    "messages_per_layer": 193292,
+    "downstream_train_seconds": 3.854369707999922,
+    "downstream_peak_rss_mb": 11309.203125,
+    "downstream_delta_rss_mb": 0.015625,
+    "downstream_inference_seconds": 0.02652704199999789
+   },
+   {
+    "removal_rate": 0.6,
+    "sparsify_seconds": 0.02222979199996189,
+    "undirected_edges": 68329,
+    "messages_per_layer": 159128,
+    "downstream_train_seconds": 3.5627342909999697,
+    "downstream_peak_rss_mb": 11271.796875,
+    "downstream_delta_rss_mb": 2.453125,
+    "downstream_inference_seconds": 0.02419958299992686
+   },
+   {
+    "removal_rate": 0.7,
+    "sparsify_seconds": 0.02107983299993066,
+    "undirected_edges": 51247,
+    "messages_per_layer": 124964,
+    "downstream_train_seconds": 3.3196622910002134,
+    "downstream_peak_rss_mb": 11268.4375,
+    "downstream_delta_rss_mb": 0.84375,
+    "downstream_inference_seconds": 0.023196290999976554
+   },
+   {
+    "removal_rate": 0.8,
+    "sparsify_seconds": 0.019998708000002807,
+    "undirected_edges": 34165,
+    "messages_per_layer": 90800,
+    "downstream_train_seconds": 3.1020307080000293,
+    "downstream_peak_rss_mb": 11268.46875,
+    "downstream_delta_rss_mb": 0.046875,
+    "downstream_inference_seconds": 0.023106749999897147
+   },
+   {
+    "removal_rate": 0.9,
+    "sparsify_seconds": 0.019115959000146177,
+    "undirected_edges": 17082,
+    "messages_per_layer": 56634,
+    "downstream_train_seconds": 3.010639749999882,
+    "downstream_peak_rss_mb": 11261.96875,
+    "downstream_delta_rss_mb": 0.015625,
+    "downstream_inference_seconds": 0.020447542000056274
+   }
+  ],
+  "full_graph": {
+   "undirected_edges": 170823,
+   "messages_per_layer": 364116,
+   "downstream_train_seconds": 5.0026345420001235,
+   "downstream_peak_rss_mb": 11131.015625,
+   "downstream_delta_rss_mb": 8.421875,
+   "downstream_inference_seconds": 0.037291874999937136
+  }
+ },
+ "task_only": {
+  "teacher_n": 20,
+  "timings": {
+   "teacher_pretrain": 2.7546727919998375,
+   "teacher_sampling": 1.5203963330000079,
+   "teacher_graph_context": 8.62456470799998,
+   "teacher_probes": 1.40774820799993,
+   "teacher_aggregate": 0.00039487499998358544,
+   "teacher_peak_rss_mb": 10989.703125,
+   "teacher_probe_components": {
+    "probe_forward": 1.1257016650006335,
+    "conn": 5.1459000360409846e-05,
+    "comm": 0.10095804300021882,
+    "spec": 9.779000015441852e-05
+   },
+   "teacher_total": 14.307776915999739,
+   "cache_max_abs_diff_task_rev": 2.2351741790771484e-08,
+   "scorer_teacher_features": 0.52419708299999,
+   "scorer_surrogate_fit": 0.027689791999819136,
+   "scorer_view_build": 3.821488792000082,
+   "scorer_fit": 14.401924417000146,
+   "scorer_fit_peak_rss_mb": 12381.015625,
+   "scorer_fit_delta_rss_mb": 218.703125,
+   "scorer_rank_inference": 0.2843879580000248,
+   "scorer_total": 18.775300084000037,
+   "one_time_total": 33.3674649579998,
+   "wall_clock": 74.97548941700006
+  },
+  "per_budget": [
+   {
+    "removal_rate": 0.1,
+    "sparsify_seconds": 0.0913044159999572,
+    "undirected_edges": 153741,
+    "messages_per_layer": 329952,
+    "downstream_train_seconds": 5.213098457999877,
+    "downstream_peak_rss_mb": 11946.65625,
+    "downstream_delta_rss_mb": 12.515625,
+    "downstream_inference_seconds": 0.033989666000024954
+   },
+   {
+    "removal_rate": 0.2,
+    "sparsify_seconds": 0.08439295900006982,
+    "undirected_edges": 136658,
+    "messages_per_layer": 295786,
+    "downstream_train_seconds": 4.372832541999969,
+    "downstream_peak_rss_mb": 11787.71875,
+    "downstream_delta_rss_mb": 0.078125,
+    "downstream_inference_seconds": 0.03655987499996627
+   },
+   {
+    "removal_rate": 0.3,
+    "sparsify_seconds": 0.025196000000050844,
+    "undirected_edges": 119576,
+    "messages_per_layer": 261622,
+    "downstream_train_seconds": 4.241875333000053,
+    "downstream_peak_rss_mb": 11742.640625,
+    "downstream_delta_rss_mb": 0.015625,
+    "downstream_inference_seconds": 0.02910712500010959
+   },
+   {
+    "removal_rate": 0.4,
+    "sparsify_seconds": 0.02404079100006129,
+    "undirected_edges": 102494,
+    "messages_per_layer": 227458,
+    "downstream_train_seconds": 4.068021332999933,
+    "downstream_peak_rss_mb": 11590.15625,
+    "downstream_delta_rss_mb": 0.015625,
+    "downstream_inference_seconds": 0.02905087499993897
+   },
+   {
+    "removal_rate": 0.5,
+    "sparsify_seconds": 0.023175292000132686,
+    "undirected_edges": 85411,
+    "messages_per_layer": 193292,
+    "downstream_train_seconds": 3.8079520839999077,
+    "downstream_peak_rss_mb": 11326.28125,
+    "downstream_delta_rss_mb": 0.015625,
+    "downstream_inference_seconds": 0.02672291699991547
+   },
+   {
+    "removal_rate": 0.6,
+    "sparsify_seconds": 0.021970083000041996,
+    "undirected_edges": 68329,
+    "messages_per_layer": 159128,
+    "downstream_train_seconds": 3.571375167000042,
+    "downstream_peak_rss_mb": 11195.5,
+    "downstream_delta_rss_mb": 2.484375,
+    "downstream_inference_seconds": 0.024286750000101165
+   },
+   {
+    "removal_rate": 0.7,
+    "sparsify_seconds": 0.021094082999979946,
+    "undirected_edges": 51247,
+    "messages_per_layer": 124964,
+    "downstream_train_seconds": 3.430543250000028,
+    "downstream_peak_rss_mb": 11161.09375,
+    "downstream_delta_rss_mb": 0.015625,
+    "downstream_inference_seconds": 0.02537979099997756
+   },
+   {
+    "removal_rate": 0.8,
+    "sparsify_seconds": 0.021443332999979248,
+    "undirected_edges": 34165,
+    "messages_per_layer": 90800,
+    "downstream_train_seconds": 3.1047073330000785,
+    "downstream_peak_rss_mb": 11067.546875,
+    "downstream_delta_rss_mb": 0.015625,
+    "downstream_inference_seconds": 0.02132216699988021
+   },
+   {
+    "removal_rate": 0.9,
+    "sparsify_seconds": 0.019198666999955094,
+    "undirected_edges": 17082,
+    "messages_per_layer": 56634,
+    "downstream_train_seconds": 2.902493666000055,
+    "downstream_peak_rss_mb": 11054.859375,
+    "downstream_delta_rss_mb": 0.03125,
+    "downstream_inference_seconds": 0.019960332999971797
+   }
+  ],
+  "full_graph": {
+   "undirected_edges": 170823,
+   "messages_per_layer": 364116,
+   "downstream_train_seconds": 4.907983375000185,
+   "downstream_peak_rss_mb": 11041.453125,
+   "downstream_delta_rss_mb": 8.421875,
+   "downstream_inference_seconds": 0.036663708000105544
+  }
+ },
+ "baselines": {
+  "random": {
+   "scorer_fit_seconds": 0.0013415419998636935,
+   "peak_rss_mb": 10652.296875
+  },
+  "original_ilp": {
+   "scorer_fit_seconds": 5.1935860839998895,
+   "peak_rss_mb": 10664.21875
+  },
+  "neuralsparse": {
+   "scorer_fit_seconds": 3.321483124999986,
+   "peak_rss_mb": 10543.921875
+  },
+  "ptdnet": {
+   "scorer_fit_seconds": 2.643522166000139,
+   "peak_rss_mb": 10544.109375
+  },
+  "resistance_proxy": {
+   "scorer_fit_seconds": 0.056460999999899286,
+   "peak_rss_mb": 10948.25
+  },
+  "gassip_adapted": {
+   "scorer_fit_seconds": 4.226375666999957,
+   "peak_rss_mb": 10949.875
+  },
+  "mog_adapted": {
+   "scorer_fit_seconds": 6.563955542000031,
+   "peak_rss_mb": 11034.671875
+  },
+  "psgnn_reimpl": {
+   "scorer_fit_seconds": 1.8121128330001284,
+   "peak_rss_mb": 11030.5
+  },
+  "nk_local_degree": {
+   "scorer_fit_seconds": 2.500646416999871,
+   "peak_rss_mb": 11031.625
+  },
+  "nk_local_similarity": {
+   "scorer_fit_seconds": 2.1456665829998656,
+   "peak_rss_mb": 10728.3125
+  }
+ }
+}

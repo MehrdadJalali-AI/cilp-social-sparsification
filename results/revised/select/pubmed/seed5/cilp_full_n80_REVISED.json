@@ -1,0 +1,76 @@
+{
+ "dataset": "pubmed",
+ "seed": 5,
+ "variant": "cilp_full",
+ "beta": {
+  "task": 1.0,
+  "comm": 0.5,
+  "conn": 1.0,
+  "spec": 0.3,
+  "repr": 0.5,
+  "group": 0.5
+ },
+ "teacher_n": 80,
+ "protocol": "REVISED",
+ "surrogate_eval_mode": true,
+ "timings": {
+  "surrogate_features": 0.08582379199992829,
+  "surrogate_fit": 0.03453600000000279,
+  "scorer_view_build": 0.5626369160000877,
+  "scorer_fit": 11.601998041000002,
+  "scorer_fit_peak_rss_mb": 2112.75,
+  "scorer_fit_delta_rss_mb": 3.359375,
+  "scorer_rank_inference": 0.19096445899992887
+ },
+ "surrogate": {
+  "insample_mae": 0.09909648650175698,
+  "insample_spearman": 0.8110407876230662,
+  "insample_kendall": 0.6620253164556961,
+  "insample_top_k_precision": 0.84,
+  "insample_top_k_recall": 0.84
+ },
+ "agreement": {
+  "holdout_surrogate_spearman": 0.8411430285757144,
+  "holdout_surrogate_kendall": 0.6684422110552763,
+  "holdout_scorer_spearman": 0.8005655141378536,
+  "holdout_scorer_kendall": 0.6171859296482411,
+  "target_degenerate": false
+ },
+ "y_hash": "cc88f394a40a",
+ "rows": [
+  {
+   "downstream_train_seconds": 1.3802562920000128,
+   "downstream_peak_rss_mb": 2113.734375,
+   "downstream_delta_rss_mb": 0.296875,
+   "downstream_inference_seconds": 0.00662424999995892,
+   "val_macro_f1": 0.8590003512772286,
+   "val_accuracy": 0.8630831643002028,
+   "retained_edge_ratio": 0.5,
+   "giant_component_ratio": 0.9177866815438455,
+   "num_components": 1054,
+   "bridge_retention": 0.993024254131788,
+   "minority_degree_retention": 0.5688456174396425,
+   "minority_isolation_rate": 0.04606385571533025,
+   "degree_ks": 0.14393670436679007,
+   "messages_per_layer": 64041,
+   "removal_rate": 0.5,
+   "prune_seconds": 0.005678125000031287
+  }
+ ],
+ "phase": "select",
+ "commit": "86556d0fff8f64df7a89700feb95749ac123e489-dirty",
+ "hardware": {
+  "cpu": "Apple M2 Pro",
+  "logical_cores": 10,
+  "ram_gb": 32.0,
+  "os": "Darwin 26.6.2",
+  "python": "3.9.6",
+  "torch": "2.4.0",
+  "torch_threads": 4,
+  "device": "cpu"
+ },
+ "cache_id": "4c79295f08b71071",
+ "wall_clock_s": 13.838355167000032,
+ "timing_grade": false,
+ "lock_sha": null
+}

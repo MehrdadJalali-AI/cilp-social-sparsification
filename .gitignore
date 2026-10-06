@@ -28,3 +28,7 @@ results/figures/
 # Other accidental checkpoints
 *.pt
 !data/splits/**/*.pt
+
+# R1 revision: regenerable criterion caches and run logs
+results/cache/
+results/revised/logs/

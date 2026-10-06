@@ -1,0 +1,11 @@
+{
+  "algorithm": "Leiden (leidenalg ModularityVertexPartition)",
+  "seed": 0,
+  "n_communities": 86,
+  "modularity": 0.4584966569266457,
+  "conductance": 0.35761005960661346,
+  "n_bridges": 5241,
+  "minority_class": 1,
+  "minority_size": 9739,
+  "leiden_seconds": 2.170604083999997
+}

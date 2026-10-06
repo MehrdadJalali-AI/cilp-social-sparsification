@@ -1,0 +1,22 @@
+{
+  "lastfm": {
+    "cilp_one_time": 14.659606745599968,
+    "amortized_per_budget": 1.6354221944222165,
+    "full_train": 2.517451758299996
+  },
+  "facebook": {
+    "cilp_one_time": 31.504943070499973,
+    "amortized_per_budget": 3.5338419333000024,
+    "full_train": 4.950984083500032
+  },
+  "github": {
+    "cilp_one_time": 56.22405397090024,
+    "amortized_per_budget": 6.288784751844464,
+    "full_train": 6.81457921659985
+  },
+  "pubmed": {
+    "cilp_one_time": 13.168200420699486,
+    "amortized_per_budget": 1.4685807523444356,
+    "full_train": 1.4049471541000458
+  }
+}
