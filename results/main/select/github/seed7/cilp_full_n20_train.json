@@ -1,0 +1,76 @@
+{
+ "dataset": "github",
+ "seed": 7,
+ "variant": "cilp_full",
+ "beta": {
+  "task": 1.0,
+  "comm": 0.5,
+  "conn": 1.0,
+  "spec": 0.3,
+  "repr": 0.5,
+  "group": 0.5
+ },
+ "teacher_n": 20,
+ "protocol": "train",
+ "surrogate_eval_mode": true,
+ "timings": {
+  "surrogate_features": 5.389224749999812,
+  "surrogate_fit": 0.05884654200008299,
+  "scorer_view_build": 9.090832708000107,
+  "scorer_fit": 21.77746391699975,
+  "scorer_fit_peak_rss_mb": 3120.234375,
+  "scorer_fit_delta_rss_mb": 1329.53125,
+  "scorer_rank_inference": 0.7774926670003879
+ },
+ "surrogate": {
+  "insample_mae": 0.13514388078574296,
+  "insample_spearman": 0.6160108274051049,
+  "insample_kendall": 0.5015894165749643,
+  "insample_top_k_precision": 1.0,
+  "insample_top_k_recall": 1.0
+ },
+ "agreement": {
+  "holdout_surrogate_spearman": 0.3639470889271297,
+  "holdout_surrogate_kendall": 0.300031330082588,
+  "holdout_scorer_spearman": 0.39800284932232954,
+  "holdout_scorer_kendall": 0.2975451645452925,
+  "target_degenerate": false
+ },
+ "y_hash": "0f02a4d3a816",
+ "rows": [
+  {
+   "downstream_train_seconds": 7.620435708000059,
+   "downstream_peak_rss_mb": 3734.90625,
+   "downstream_delta_rss_mb": 24.5625,
+   "downstream_inference_seconds": 0.05557825000005323,
+   "val_macro_f1": 0.8092308190240965,
+   "val_accuracy": 0.8627320954907162,
+   "retained_edge_ratio": 0.49999826991415314,
+   "giant_component_ratio": 0.9995490716180372,
+   "num_components": 17,
+   "bridge_retention": 0.9994275901545506,
+   "minority_degree_retention": 0.6764132081999918,
+   "minority_isolation_rate": 0.0005133997330321388,
+   "degree_ks": 0.11485411140583557,
+   "messages_per_layer": 326702,
+   "removal_rate": 0.5,
+   "prune_seconds": 0.05572291599992241
+  }
+ ],
+ "phase": "select",
+ "commit": "86556d0fff8f64df7a89700feb95749ac123e489-dirty",
+ "hardware": {
+  "cpu": "Apple M2 Pro",
+  "logical_cores": 10,
+  "ram_gb": 32.0,
+  "os": "Darwin 26.6.2",
+  "python": "3.9.6",
+  "torch": "2.4.0",
+  "torch_threads": 4,
+  "device": "cpu"
+ },
+ "cache_id": "cef839765bc7db95",
+ "wall_clock_s": 39.808343250000235,
+ "timing_grade": false,
+ "lock_sha": null
+}

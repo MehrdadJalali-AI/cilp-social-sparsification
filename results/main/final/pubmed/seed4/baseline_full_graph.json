@@ -1,0 +1,53 @@
+{
+ "dataset": "pubmed",
+ "seed": 4,
+ "variant": "baseline_full_graph",
+ "protocol": "train",
+ "phase": "final",
+ "timings": {},
+ "rows": [
+  {
+   "downstream_train_seconds": 2.3278655839999374,
+   "downstream_peak_rss_mb": 407.765625,
+   "downstream_delta_rss_mb": 52.96875,
+   "downstream_inference_seconds": 0.01275008299990077,
+   "val_macro_f1": 0.8572773670219552,
+   "val_accuracy": 0.8615618661257607,
+   "test_macro_f1": 0.854017735467027,
+   "test_accuracy": 0.858737002282526,
+   "test_worst_class_f1": 0.8293867638129934,
+   "retained_edge_ratio": 1.0,
+   "giant_component_ratio": 1.0,
+   "num_components": 1,
+   "bridge_retention": 1.0,
+   "minority_degree_retention": 0.9999999974061197,
+   "minority_isolation_rate": 0.0,
+   "degree_ks": 0.0,
+   "messages_per_layer": 108365,
+   "leiden_seconds": 0.6871408340000471,
+   "conductance_ref": 0.14128137376876193,
+   "conductance_ratio": 1.0,
+   "nmi_leiden": 1.0,
+   "ari_leiden": 1.0,
+   "modularity_ref_partition": 0.7726723493913247,
+   "modularity_retention": 1.0,
+   "modularity_redetected": 0.7726723493913247,
+   "removal_rate": 0.0,
+   "prune_seconds": 0.0019467090000944154
+  }
+ ],
+ "commit": "3e92e4e98d387b4c912f7a78b1761d451d2c155d-dirty",
+ "hardware": {
+  "cpu": "Apple M2 Pro",
+  "logical_cores": 10,
+  "ram_gb": 32.0,
+  "os": "Darwin 26.6.2",
+  "python": "3.9.6",
+  "torch": "2.4.0",
+  "torch_threads": 3,
+  "device": "cpu"
+ },
+ "wall_clock_s": 3.113525665999987,
+ "timing_grade": false,
+ "lock_sha": "72a7c2708e209d01"
+}

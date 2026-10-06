@@ -1,0 +1,76 @@
+{
+ "dataset": "lastfm",
+ "seed": 4,
+ "variant": "task_only",
+ "beta": {
+  "task": 1.0,
+  "comm": 0.0,
+  "conn": 0.0,
+  "spec": 0.0,
+  "repr": 0.0,
+  "group": 0.0
+ },
+ "teacher_n": 20,
+ "protocol": "train",
+ "surrogate_eval_mode": true,
+ "timings": {
+  "surrogate_features": 0.17320533299994167,
+  "surrogate_fit": 0.028234792000148445,
+  "scorer_view_build": 1.1987643330000992,
+  "scorer_fit": 18.742685624999922,
+  "scorer_fit_peak_rss_mb": 6667.0625,
+  "scorer_fit_delta_rss_mb": 6.828125,
+  "scorer_rank_inference": 0.4438052499999685
+ },
+ "surrogate": {
+  "insample_mae": 0.09896817845645742,
+  "insample_spearman": 0.27529148242421286,
+  "insample_kendall": 0.20580546572992364,
+  "insample_top_k_precision": 1.0,
+  "insample_top_k_recall": 1.0
+ },
+ "agreement": {
+  "holdout_surrogate_spearman": 0.1081290311098299,
+  "holdout_surrogate_kendall": 0.07268100279710919,
+  "holdout_scorer_spearman": 0.14148363046695578,
+  "holdout_scorer_kendall": 0.09396579334560336,
+  "target_degenerate": false
+ },
+ "y_hash": "bc2f33e675ac",
+ "rows": [
+  {
+   "downstream_train_seconds": 3.4779546249999385,
+   "downstream_peak_rss_mb": 6669.09375,
+   "downstream_delta_rss_mb": 2.1875,
+   "downstream_inference_seconds": 0.01790420800011816,
+   "val_macro_f1": 0.7974435570084277,
+   "val_accuracy": 0.8800786369593709,
+   "retained_edge_ratio": 0.5,
+   "giant_component_ratio": 0.9972455403987408,
+   "num_components": 16,
+   "bridge_retention": 1.0,
+   "minority_degree_retention": 0.9999999927272728,
+   "minority_isolation_rate": 0.0,
+   "degree_ks": 0.2098635886673662,
+   "messages_per_layer": 35430,
+   "removal_rate": 0.5,
+   "prune_seconds": 0.00826883300010195
+  }
+ ],
+ "phase": "select",
+ "commit": "2c27c811ad178d8b4dffdd427dc384949ef0de55",
+ "hardware": {
+  "cpu": "Apple M2 Pro",
+  "logical_cores": 10,
+  "ram_gb": 32.0,
+  "os": "Darwin 26.6.2",
+  "python": "3.9.6",
+  "torch": "2.4.0",
+  "torch_threads": 3,
+  "device": "cpu"
+ },
+ "cache_id": "f1b193ca8cacad67",
+ "wall_clock_s": 24.118835125000032,
+ "timing_grade": false,
+ "lock_sha": null
+}

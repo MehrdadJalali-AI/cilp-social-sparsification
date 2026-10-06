@@ -29,6 +29,5 @@ results/figures/
 *.pt
 !data/splits/**/*.pt
 
-# R1 revision: regenerable criterion caches and run logs
+# experiment pipeline caches (regenerable)
 results/cache/
-results/revised/logs/

@@ -48,7 +48,7 @@
 | huang2024c2explainer | Insufficient verification for current draft — **removed from text** |
 | liu2023dspar | Not used as independent baseline name; resistance cited via Spielman |
 
-## Unresolved (not cited in revised main text)
+## Unresolved (not cited in main text)
 
 Optional SI-only literature may be re-added only after DOI/venue verification:
 GCFExplainer, MEG, Wellawatte, Bajaj, Yuan survey, Faber, etc.
